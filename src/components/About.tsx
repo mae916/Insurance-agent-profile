@@ -1,5 +1,7 @@
 import { CalendarClock, Users, FileCheck2 } from 'lucide-react';
 import man from '../assets/silversu.png';
+import Title from './Title';
+import { useInView } from '../hooks/useInView';
 
 const InfoCard = ({ icon, number, label, desc, className = '' }: any) => (
   <div className={`flex flex-col text-white w-fit ${className}`}>
@@ -19,14 +21,24 @@ const InfoCard = ({ icon, number, label, desc, className = '' }: any) => (
 );
 
 function About() {
+  const { ref, isVisible } = useInView<HTMLImageElement>();
+
   return (
     <section id="about" className="py-16 mb-0 bg-white lg:py-24 lg:relative">
       <article className="w-[90%] mx-auto lg:w-2/3">
-        <h2 className="text-2xl font-bold text-center text-primary">
-          설계사 소개
-        </h2>
+        <Title title="설계사 소개"></Title>
         <div className="lg:justify-between lg:items-center lg:flex">
-          <img src={man} width={590} alt="사람 이미지" className="mx-auto" />
+          <div>
+            <img
+              ref={ref}
+              src={man}
+              width={590}
+              alt="사람 이미지"
+              className={`mx-auto ${
+                isVisible ? 'animate-zoom-in' : 'opacity-0'
+              }`}
+            />
+          </div>
 
           {/* 주요 정보 카드 - mobile */}
           <article className="block lg:hidden">
@@ -41,25 +53,29 @@ function About() {
                   상담해드립니다.
                 </>
               }
-              className={'rounded-[40px] bg-accent py-5 px-7 w-full'}
+              className={
+                'rounded-[40px] bg-accent py-5 px-7 w-full animate-fade-in-up transition hover:shadow-md hover:-translate-y-1'
+              }
             />
             <InfoCard
               icon={<Users className="w-9 h-9" />}
-              number="431명"
+              number="737명"
               label="현재 고객 수"
               desc={
                 <>
-                  현재 431명 이상의 고객과 함께하고 있습니다.
+                  현재 737명 이상의 고객과 함께하고 있습니다.
                   <br className="hidden lg:block" /> 한 분 한 분 끝까지 책임지는
                   마음으로 일합니다.
                 </>
               }
-              className={'rounded-[40px] bg-accent py-5 px-7 w-full mt-1'}
+              className={
+                'rounded-[40px] bg-accent py-5 px-7 w-full animate-fade-in-up transition hover:shadow-md hover:-translate-y-1 mt-1'
+              }
             />
             <InfoCard
               icon={<FileCheck2 className="w-9 h-9" />}
-              number="1250건"
-              label="진행중인 보험금 청구"
+              number="1500건"
+              label="현재 관리 중인 계약 건"
               desc={
                 <>
                   단순 안내에서 끝나지 않습니다.
@@ -69,7 +85,9 @@ function About() {
                   끝까지 도와드립니다.
                 </>
               }
-              className={'rounded-[40px] bg-accent py-5 px-7 w-full mt-1'}
+              className={
+                'rounded-[40px] bg-accent py-5 px-7 w-full animate-fade-in-up transition hover:shadow-md hover:-translate-y-1 mt-1'
+              }
             />
           </article>
           <div>
@@ -187,8 +205,8 @@ function About() {
         />
         <InfoCard
           icon={<FileCheck2 className="w-10 h-10" />}
-          number="1250건"
-          label="진행중인 보험금 청구"
+          number="1500건"
+          label="현재 관리 중인 계약 건"
           desc={
             <>
               단순 안내에서 끝나지 않습니다.

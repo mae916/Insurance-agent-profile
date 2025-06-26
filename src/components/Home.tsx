@@ -1,7 +1,10 @@
 import man from '../assets/silversu.png';
 import { UserCheck, TrendingUp } from 'lucide-react';
+import { useInView } from '../hooks/useInView';
 
 function Home() {
+  const { ref, isVisible } = useInView<HTMLImageElement>();
+  const { ref: ref2, isVisible: isVisible2 } = useInView<HTMLImageElement>();
   return (
     <section
       id="home"
@@ -41,9 +44,17 @@ function Home() {
           </div>
           {/* 사람이미지 - mobile */}
           <div className="block lg:hidden">
-            <img src={man} width={650} alt="사람 이미지" className="mx-auto " />
+            <img
+              ref={ref}
+              src={man}
+              width={650}
+              alt="사람 이미지"
+              className={`mx-auto ${
+                isVisible ? 'animate-zoom-in' : 'opacity-0'
+              }`}
+            />
           </div>
-          <button className="w-full px-6 py-5 text-2xl font-bold text-white rounded-full lg:w-auto lg:px-16 lg:mt-16 bg-accent">
+          <button className="w-full px-6 py-5 text-2xl font-bold text-white transition-transform duration-200 rounded-full lg:w-auto lg:px-16 lg:mt-16 bg-accent hover:scale-105 hover:shadow-lg">
             😎 무료 상담 신청하기 &rarr;
           </button>
 
@@ -73,7 +84,15 @@ function Home() {
         </div>
         {/* 사람이미지 - pc */}
         <div className="absolute bottom-0 hidden lg:block right-24">
-          <img src={man} width={650} alt="사람 이미지" />
+          <img
+            ref={ref2}
+            src={man}
+            width={650}
+            alt="사람 이미지"
+            className={`mx-auto ${
+              isVisible2 ? 'animate-zoom-in' : 'opacity-0'
+            }`}
+          />
         </div>
       </article>
     </section>
