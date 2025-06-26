@@ -5,7 +5,7 @@ import type { ISections } from '../types';
 function Header({ sections }: ISections) {
   return (
     <header className="shadow-[0_2px_12px_rgba(0,0,0,0.06)] border-muted w-full py-4 sticky top-0 bg-white z-10">
-      <div className="flex items-center justify-between mx-auto lg:w-2/3 w-[90%]">
+      <div className="flex items-center justify-between mx-auto lg:w-3/4 w-[90%]">
         <div className="flex items-center text-primary">
           <div className="mr-3">
             <img src={logo} alt="" className="w-20 lg:w-100" />

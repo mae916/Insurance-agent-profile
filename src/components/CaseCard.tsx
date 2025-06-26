@@ -23,7 +23,7 @@ const CaseCard = ({
   result,
   summary,
 }: CaseCardProps) => {
-  const { ref, isVisible } = useInView();
+  const { ref, isVisible } = useInView<HTMLDivElement>();
 
   return (
     <div

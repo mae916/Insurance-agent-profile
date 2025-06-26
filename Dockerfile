@@ -3,7 +3,7 @@ FROM node:18-alpine AS build
 WORKDIR /usr/src/app
 
 COPY package.json . 
-RUN npm install
+RUN npm cache clean --force && npm install --verbose
 
 COPY . . 
 RUN npm run build  # Vite라면 dist 폴더 생성됨
