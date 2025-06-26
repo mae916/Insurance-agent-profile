@@ -8,6 +8,7 @@ import {
   MessageCircle,
   // HelpCircle,
 } from 'lucide-react';
+import Title from './Title';
 
 const steps = [
   {
@@ -45,7 +46,7 @@ export default function Contact() {
       <div className="px-4 mx-auto">
         {/* 제목 */}
         <div className="mb-16 text-center">
-          <h2 className="text-2xl font-bold text-primary">문의하기</h2>
+          <Title title={'문의하기'}></Title>
           <p className="mt-2 text-gray-600">
             상담 전 확인하시면 더 빠른 안내가 가능합니다.
           </p>
@@ -119,7 +120,7 @@ export default function Contact() {
 
         {/* 절차 안내 */}
         <div className="mt-20 mb-12 text-center">
-          <h2 className="text-2xl font-bold text-primary">문의 절차 안내</h2>
+          <Title title={'문의 절차 안내'}></Title>
           <p className="mt-2 text-gray-600">
             보험 상담은 아래의 간단한 절차로 진행됩니다.
           </p>
@@ -130,7 +131,7 @@ export default function Contact() {
           {steps.map(({ step, title, desc, icon }) => (
             <div
               key={step}
-              className="relative flex flex-col items-center p-6 pt-12 transition bg-white border border-gray-200 shadow-sm rounded-xl hover:shadow-md"
+              className="relative flex flex-col items-center p-6 pt-12 transition-all duration-300 bg-white border border-gray-200 shadow-sm rounded-xl hover:shadow-lg hover:-translate-y-1"
             >
               <div className="absolute flex items-center justify-center w-10 h-10 font-bold text-white -translate-x-1/2 rounded-full shadow -top-5 left-1/2 bg-accent">
                 {step}

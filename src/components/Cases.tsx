@@ -1,4 +1,5 @@
 import CaseCard from './CaseCard';
+import Title from './Title';
 
 const remodelingCases = [
   {
@@ -51,9 +52,7 @@ function Cases() {
   return (
     <section id="cases" className="py-20 mx-auto bg-[#f7faff] scroll-mt-16 ">
       <div className="mx-auto space-y-16 lg:w-2/3 w-[90%]">
-        <h2 className="mb-6 text-2xl font-bold text-center text-primary">
-          상담 사례
-        </h2>
+        <Title title="상담 사례"></Title>
 
         <article>
           <h3 className="mb-4 text-xl font-semibold text-accent">

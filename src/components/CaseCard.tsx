@@ -1,4 +1,5 @@
-// components/CaseCard.tsx
+import { useInView } from '../hooks/useInView';
+
 interface CaseCardProps {
   title: string;
   before?: string;
@@ -22,8 +23,16 @@ const CaseCard = ({
   result,
   summary,
 }: CaseCardProps) => {
+  const { ref, isVisible } = useInView();
+
   return (
-    <div className="p-5 space-y-2 transition bg-white shadow rounded-xl">
+    <div
+      ref={ref}
+      className={`p-5 space-y-2 transition-all duration-700 ease-out bg-white shadow rounded-xl 
+        hover:shadow-md hover:-translate-y-1
+         ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}
+      `}
+    >
       <h4 className="text-lg font-bold text-primary">{title}</h4>
       {before && <p>💸 기존: {before}</p>}
       {after && <p>📊 변경 후: {after}</p>}
