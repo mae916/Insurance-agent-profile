@@ -2,6 +2,8 @@
 
 > **React + Vite + Tailwind 기반 반응형 CSR 랜딩 페이지**
 
+<br/>
+
 ### 🎯 프로젝트 목표
 
 - 보험 설계사를 위한 깔끔하고 직관적인 랜딩페이지 제공
@@ -9,6 +11,7 @@
 - 빠른 로딩 속도를 위한 CSR(Client Side Rendering) 방식 적용
 - QR 코드 기반 명함 활용을 염두한 개인 브랜드 사이트 제작
 
+<br/>
 
 ### ✅ 기술적 특징
 
@@ -29,6 +32,7 @@
 - 이미지 및 텍스트 콘텐츠 교체
 - 하드코딩된 데이터 구조화 및 외부화
 
+<br/>
 
 ## 🚀 배포 링크
 
@@ -36,6 +40,7 @@
 
 > _모바일 환경에서 최적화된 화면을 경험하실 수 있습니다_
 
+<br/>
 
 ## 🛠 기술 스택
 
@@ -48,6 +53,7 @@
   <img src="https://img.shields.io/badge/aws_ec2-FF9900?style=for-the-badge&logo=amazonaws&logoColor=black">
 </div>
 
+<br/>
 
 ## 📖 프로젝트 구조
 
@@ -95,6 +101,7 @@
 
 </details>
 
+<br/>
 
 ## 📌 주요 화면 예시
 
