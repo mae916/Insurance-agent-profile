@@ -9,7 +9,6 @@
 - 빠른 로딩 속도를 위한 CSR(Client Side Rendering) 방식 적용
 - QR 코드 기반 명함 활용을 염두한 개인 브랜드 사이트 제작
 
----
 
 ### ✅ 기술적 특징
 
@@ -30,7 +29,6 @@
 - 이미지 및 텍스트 콘텐츠 교체
 - 하드코딩된 데이터 구조화 및 외부화
 
----
 
 ## 🚀 배포 링크
 
@@ -38,7 +36,6 @@
 
 > _모바일 환경에서 최적화된 화면을 경험하실 수 있습니다_
 
----
 
 ## 🛠 기술 스택
 
@@ -51,7 +48,6 @@
   <img src="https://img.shields.io/badge/aws_ec2-FF9900?style=for-the-badge&logo=amazonaws&logoColor=black">
 </div>
 
----
 
 ## 📖 프로젝트 구조
 
@@ -99,10 +95,11 @@
 
 </details>
 
----
 
-### 📌 주요 화면 예시
+## 📌 주요 화면 예시
 
-#### 메인 페이지 (PC)
+### 메인 페이지 (PC)
+![메인 페이지_PC](src/assets/readme/main_pc.png)
 
-#### 메인 페이지 (모바일)
+### 메인 페이지 (모바일)
+![메인 페이지_mobile](src/assets/readme/main_mobile.png)
