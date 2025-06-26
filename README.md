@@ -107,6 +107,3 @@
 
 ### 메인 페이지 (PC)
 ![메인 페이지_PC](src/assets/readme/main_pc.png)
-
-### 메인 페이지 (모바일)
-![메인 페이지_mobile](src/assets/readme/main_mobile.png)
