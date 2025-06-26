@@ -51,7 +51,7 @@ const specialCases = [
 function Cases() {
   return (
     <section id="cases" className="py-20 mx-auto bg-[#f7faff] scroll-mt-16 ">
-      <div className="mx-auto space-y-16 lg:w-2/3 w-[90%]">
+      <div className="mx-auto space-y-16 lg:w-3/4 w-[90%]">
         <Title title="상담 사례"></Title>
 
         <article>

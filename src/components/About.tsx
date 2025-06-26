@@ -8,13 +8,13 @@ const InfoCard = ({ icon, number, label, desc, className = '' }: any) => (
     <div className="flex items-center">
       <div className="p-4 mr-8 bg-white rounded-full text-accent">{icon}</div>
       <div>
-        <h3 className="text-3xl font-extrabold tracking-wide lg:text-4xl">
+        <h3 className="text-3xl font-extrabold tracking-wide lg:text-3xl">
           {number}
         </h3>
-        <p className="mt-3 text-xl lg:text-2xl font-midium">{label}</p>
+        <p className="mt-3 text-xl lg:text-xl font-midium">{label}</p>
       </div>
     </div>
-    <p className="mt-8 text-lg lg:leading-relaxed lg:text-xl text-white/80">
+    <p className="mt-8 text-lg lg:leading-relaxed lg:text-lg text-white/80">
       {desc}
     </p>
   </div>
@@ -25,20 +25,18 @@ function About() {
 
   return (
     <section id="about" className="py-16 mb-0 bg-white lg:py-24 lg:relative">
-      <article className="w-[90%] mx-auto lg:w-2/3">
+      <article className="w-[90%] mx-auto lg:w-3/4">
         <Title title="설계사 소개"></Title>
         <div className="lg:justify-between lg:items-center lg:flex">
-          <div>
-            <img
-              ref={ref}
-              src={man}
-              width={590}
-              alt="사람 이미지"
-              className={`mx-auto ${
-                isVisible ? 'animate-zoom-in' : 'opacity-0'
-              }`}
-            />
-          </div>
+          <img
+            ref={ref}
+            src={man}
+            width={500}
+            alt="사람 이미지"
+            className={`mx-auto lg:mr-20 ${
+              isVisible ? 'animate-zoom-in' : 'opacity-0'
+            }`}
+          />
 
           {/* 주요 정보 카드 - mobile */}
           <article className="block lg:hidden">
@@ -106,13 +104,13 @@ function About() {
             {/* 수상 이력 및 인증 */}
 
             <div className="mb-12 space-y-6">
-              <h3 className="text-xl font-bold text-gray-800">
+              <h3 className="text-xl font-bold text-primary">
                 수상 이력 및 인증
               </h3>
 
               {/* 손해보험협회 우수 인증 */}
               <div>
-                <p className="mb-2 text-sm font-medium text-black/70">
+                <p className="mb-2 font-medium text-black/70">
                   ✔ 손해보험협회 우수 인증
                 </p>
                 <ul className="flex flex-wrap gap-2">
@@ -143,7 +141,7 @@ function About() {
 
               {/* AMC 수상 */}
               <div>
-                <p className="mb-2 text-sm font-medium text-black/70">
+                <p className="mb-2 font-medium text text-black/70">
                   🏆 AMC상 수상
                 </p>
                 <ul className="flex flex-wrap gap-2">
@@ -160,7 +158,7 @@ function About() {
 
               {/* 장기활동상 수상 */}
               <div>
-                <p className="mb-2 text-sm font-medium text-black/70">
+                <p className="mb-2 font-medium text text-black/70">
                   📌 장기활동상 수상
                 </p>
                 <ul className="flex flex-wrap gap-2">
@@ -179,7 +177,7 @@ function About() {
         </div>
       </article>
       {/* 주요 정보 카드-pc */}
-      <article className="lg:flex lg:justify-between lg:px-16 lg:py-12 w-[80%] m-auto rounded-[40px] bg-accent hidden">
+      <article className="lg:flex lg:justify-between lg:px-16 lg:py-12 lg:w-[80%] m-auto rounded-[40px] bg-accent hidden">
         <InfoCard
           icon={<CalendarClock className="w-10 h-10" />}
           number="27년차"
@@ -201,7 +199,7 @@ function About() {
               끝까지 책임지는 마음으로 일합니다.
             </>
           }
-          className="border-white border-opacity-50 lg:px-12 lg:border-l lg:border-r"
+          className="border-white border-opacity-50 lg:px-8 lg:border-l lg:border-r"
         />
         <InfoCard
           icon={<FileCheck2 className="w-10 h-10" />}

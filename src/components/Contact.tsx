@@ -41,7 +41,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-24 bg-white scroll-mt-24 w-[90%] mx-auto lg:w-2/3"
+      className="py-24 bg-white scroll-mt-24 w-[90%] mx-auto lg:w-3/4"
     >
       <div className="px-4 mx-auto">
         {/* 제목 */}
@@ -82,7 +82,7 @@ export default function Contact() {
               <li>최근 병력 여부</li>
               <li>원하는 보장 범위 (예: 실비 / 암 / 치매 등)</li>
             </ul>
-            <p className="mt-3 text-lg text-primary">
+            <p className="mt-3 text-primary">
               위 내용이 없다면 편하게 문의만 주셔도 괜찮습니다 🙂
             </p>
           </div>
