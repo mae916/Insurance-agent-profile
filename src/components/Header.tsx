@@ -13,9 +13,13 @@ function Header({ sections }: ISections) {
           <span className="font-bold lg:mt-1 text-primary">자강대리점</span>
         </div>
         <NavBar sections={sections}></NavBar>
-        <button className="px-4 py-2 font-semibold text-white rounded lg:px-8 lg:py-3 lg:text-xl bg-accent">
+        <a
+          href="http://pf.kakao.com/_wxefFn"
+          target="_blank"
+          className="px-4 py-2 font-semibold text-white rounded lg:px-8 lg:py-3 lg:text-xl bg-accent"
+        >
           상담하기
-        </button>
+        </a>
       </div>
     </header>
   );

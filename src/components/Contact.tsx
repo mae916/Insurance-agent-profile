@@ -41,7 +41,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-24 bg-white scroll-mt-24 w-[90%] mx-auto lg:w-3/4"
+      className="py-24 bg-white scroll-mt-10 w-[90%] mx-auto lg:w-3/4"
     >
       <div className="px-4 mx-auto">
         {/* 제목 */}
@@ -145,7 +145,7 @@ export default function Contact() {
         {/* 플로팅 문의하기 버튼 */}
         <div className="fixed z-50 bottom-6 right-6">
           <a
-            href="https://pf.kakao.com/_XXXXXX"
+            href="http://pf.kakao.com/_wxefFn"
             target="_blank"
             rel="noopener noreferrer"
             className="relative flex items-center pl-2 transition rounded-full lg:bg-white lg:shadow-lg hover:shadow-xl"
