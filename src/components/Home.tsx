@@ -8,7 +8,7 @@ function Home() {
   return (
     <section
       id="home"
-      className="relative w-full h-full pt-16 pb-2 lg:pt-24 lg:pb-12 bg-secondary scroll-mt-24"
+      className="relative w-full h-full pt-16 pb-2 lg:pt-15 lg:pb-0 bg-secondary scroll-mt-24"
     >
       <article className="lg:w-3/4 w-[90%] mx-auto lg:items-center lg:justify-between lg:flex">
         <div>
@@ -38,22 +38,27 @@ function Home() {
             </p>
           </div>
           {/* 사람이미지 - mobile */}
-          <div className="block lg:hidden">
+          <div className="block mt-14 lg:hidden">
             <img
               ref={ref}
               src={man}
-              width={650}
+              width={350}
+              height={500}
               alt="사람 이미지"
-              className={`mx-auto ${
+              className={`mx-auto object-cover object-top h-[500px] ${
                 isVisible ? 'animate-zoom-in' : 'opacity-0'
               }`}
             />
           </div>
-          <button className="w-full px-6 py-5 text-2xl font-bold text-white transition-transform duration-200 rounded-full lg:w-auto lg:px-16 lg:mt-12 bg-accent hover:scale-105 hover:shadow-lg">
+          <a
+            href="http://pf.kakao.com/_wxefFn"
+            target="_blank"
+            className="inline-block w-full px-6 py-5 text-2xl font-bold text-center text-white transition-transform duration-200 rounded-full lg:w-auto lg:px-16 lg:mt-12 bg-accent hover:scale-105 hover:shadow-lg"
+          >
             😎 무료 상담 신청하기 &rarr;
-          </button>
+          </a>
 
-          <div className="grid grid-cols-1 gap-6 my-20 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 mx-auto my-20 sm:grid-cols-2 w-fit lg:w-auto">
             <div className="flex items-start gap-4">
               <TrendingUp className="w-8 h-8 mt-1 text-accent" />
               <div>
@@ -78,13 +83,14 @@ function Home() {
           </div>
         </div>
         {/* 사람이미지 - pc */}
-        <div className="absolute bottom-0 hidden lg:block right-24">
+        <div className="hidden lg:block">
           <img
             ref={ref2}
             src={man}
-            width={600}
+            width={450}
+            height={800}
             alt="사람 이미지"
-            className={`mx-auto ${
+            className={`object-cover object-top h-[800px] ${
               isVisible2 ? 'animate-zoom-in' : 'opacity-0'
             }`}
           />

@@ -24,16 +24,20 @@ function About() {
   const { ref, isVisible } = useInView<HTMLImageElement>();
 
   return (
-    <section id="about" className="py-16 mb-0 bg-white lg:py-24 lg:relative">
+    <section
+      id="about"
+      className="py-16 mb-0 bg-white lg:py-24 lg:relative scroll-mt-10"
+    >
       <article className="w-[90%] mx-auto lg:w-3/4">
         <Title title="설계사 소개"></Title>
-        <div className="lg:justify-between lg:items-center lg:flex">
+        <div className="mt-16 lg:justify-between lg:items-center lg:flex">
           <img
             ref={ref}
             src={man}
             width={500}
+            height={650}
             alt="사람 이미지"
-            className={`mx-auto lg:mr-20 ${
+            className={`mx-auto object-cover lg:h-[650px] h-[550px] object-top lg:mr-20 ${
               isVisible ? 'animate-zoom-in' : 'opacity-0'
             }`}
           />
