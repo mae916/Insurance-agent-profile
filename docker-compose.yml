@@ -1,0 +1,25 @@
+version: '3.8'
+
+# 보험설계사 프로필 개별 실행용 Docker Compose
+# 단독 실행: docker-compose up -d
+# 통합 실행: mycrojet/docker-compose.yml 사용
+
+services:
+  # ============================================
+  # 자강 웹 (Vite + React)
+  # jagang.jinproject.xyz
+  # ============================================
+  jagang-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: jagang-web
+    restart: always
+    ports:
+      - "8003:80"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
