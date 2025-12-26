@@ -22,15 +22,15 @@ function Header({ sections }: ISections) {
     <header
       className={`w-full py-4 sticky top-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-sm'
+          ? 'bg-white/95 backdrop-blur-md shadow-[0_1px_0_0_rgba(0,0,0,0.05)]'
           : 'bg-white'
       }`}
     >
       <div className="flex items-center justify-between mx-auto lg:w-3/4 w-[90%]">
         {/* 로고 */}
         <a href="#home" className="flex items-center gap-3">
-          <img src={logo} alt="삼성화재" className="w-14 lg:w-16" />
-          <span className="text-lg font-bold text-blue-900">자강대리점</span>
+          <img src={logo} alt="삼성화재" className="w-12 lg:w-14" />
+          <span className="text-base font-bold text-[#1e3a5f]">자강대리점</span>
         </a>
 
         {/* PC 네비게이션 */}
@@ -41,7 +41,7 @@ function Header({ sections }: ISections) {
           href="http://pf.kakao.com/_wxefFn"
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden lg:flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
+          className="hidden lg:flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-[#1e3a5f] rounded-full hover:bg-[#2d5a87] transition-colors"
         >
           <MessageCircle className="w-4 h-4" />
           상담하기
@@ -50,13 +50,13 @@ function Header({ sections }: ISections) {
         {/* 모바일 메뉴 버튼 */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="lg:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
+          className="lg:hidden p-2 rounded-lg hover:bg-[#f5f5f5] transition-colors"
           aria-label="메뉴"
         >
           {isMobileMenuOpen ? (
-            <X className="w-6 h-6 text-slate-600" />
+            <X className="w-6 h-6 text-[#333]" />
           ) : (
-            <Menu className="w-6 h-6 text-slate-600" />
+            <Menu className="w-6 h-6 text-[#333]" />
           )}
         </button>
       </div>

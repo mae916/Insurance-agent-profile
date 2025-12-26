@@ -45,10 +45,10 @@ function NavBar({ sections }: ISections) {
           <li key={section.id}>
             <a
               href={`#${section.id}`}
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+              className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 ${
                 active === section.id
-                  ? 'text-blue-600 bg-blue-50'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                  ? 'text-[#1e3a5f] bg-[#1e3a5f]/5'
+                  : 'text-[#666] hover:text-[#1a1a1a]'
               }`}
             >
               {section.label}

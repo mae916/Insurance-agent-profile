@@ -13,11 +13,11 @@ function Title({ title, subtitle }: TitleProps) {
       ref={ref}
       className={`text-center ${isVisible ? 'animate-fade-in-down' : 'opacity-0'}`}
     >
-      <h2 className="text-3xl font-bold text-slate-900 lg:text-4xl">
+      <h2 className="text-3xl font-bold text-[#1a1a1a] lg:text-4xl tracking-tight">
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-4 text-lg text-slate-600">{subtitle}</p>
+        <p className="mt-4 text-lg text-[#666]">{subtitle}</p>
       )}
     </div>
   );
