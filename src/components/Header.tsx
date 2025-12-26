@@ -22,15 +22,18 @@ function Header({ sections }: ISections) {
     <header
       className={`w-full py-4 sticky top-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-[0_1px_0_0_rgba(0,0,0,0.05)]'
+          ? 'bg-white/95 backdrop-blur-xl shadow-soft'
           : 'bg-white'
       }`}
     >
-      <div className="flex items-center justify-between mx-auto lg:w-3/4 w-[90%]">
+      <div className="flex items-center justify-between mx-auto lg:w-4/5 w-[90%]">
         {/* 로고 */}
-        <a href="#home" className="flex items-center gap-3">
-          <img src={logo} alt="삼성화재" className="w-12 lg:w-14" />
-          <span className="text-base font-bold text-[#1e3a5f]">자강대리점</span>
+        <a href="#home" className="flex items-center gap-3 group">
+          <img src={logo} alt="삼성화재" className="w-12 lg:w-14 group-hover:scale-105 transition-transform" />
+          <div className="flex flex-col">
+            <span className="text-base font-bold text-[#0033A0]">자강대리점</span>
+            <span className="text-xs text-[#94A3B8] hidden sm:block">삼성화재 공식 대리점</span>
+          </div>
         </a>
 
         {/* PC 네비게이션 */}
@@ -41,7 +44,7 @@ function Header({ sections }: ISections) {
           href="http://pf.kakao.com/_wxefFn"
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden lg:flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-[#0033A0] rounded-full hover:bg-[#1E56B3] transition-colors"
+          className="hidden lg:flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-[#0033A0] to-[#1E56B3] rounded-full hover:from-[#002277] hover:to-[#0033A0] transition-all shadow-blue hover:shadow-elevated hover:-translate-y-0.5"
         >
           <MessageCircle className="w-4 h-4" />
           상담하기
@@ -50,13 +53,13 @@ function Header({ sections }: ISections) {
         {/* 모바일 메뉴 버튼 */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="lg:hidden p-2 rounded-lg hover:bg-[#f5f5f5] transition-colors"
+          className="lg:hidden p-2.5 rounded-xl hover:bg-[#F8FAFC] transition-colors"
           aria-label="메뉴"
         >
           {isMobileMenuOpen ? (
-            <X className="w-6 h-6 text-[#333]" />
+            <X className="w-6 h-6 text-[#0F172A]" />
           ) : (
-            <Menu className="w-6 h-6 text-[#333]" />
+            <Menu className="w-6 h-6 text-[#0F172A]" />
           )}
         </button>
       </div>

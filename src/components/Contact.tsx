@@ -13,8 +13,12 @@ export default function Contact() {
   const { ref, isVisible } = useInView<HTMLDivElement>();
 
   return (
-    <section id="contact" className="py-28 bg-white scroll-mt-14">
-      <div className="w-[90%] mx-auto lg:w-3/4">
+    <section id="contact" className="relative py-28 bg-[#F8FAFC] scroll-mt-14 overflow-hidden">
+      {/* 배경 장식 */}
+      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white to-transparent" />
+      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-to-tl from-[#0033A0]/5 to-transparent rounded-full translate-x-1/3 translate-y-1/3" />
+
+      <div className="relative z-10 w-[90%] mx-auto lg:w-4/5">
         <Title
           title="문의하기"
           subtitle="편하게 연락주시면 친절히 상담해드리겠습니다"
@@ -23,54 +27,54 @@ export default function Contact() {
         {/* 안내 카드 */}
         <div className="grid grid-cols-1 gap-6 mt-16 lg:grid-cols-2">
           {/* 상담 시간 */}
-          <div className="group p-8 bg-white rounded-2xl border border-[#eee] hover:border-[#1e3a5f]/20 shadow-elegant hover:shadow-elegant-lg transition-all duration-300">
+          <div className="group p-8 bg-white rounded-2xl border border-[#E2E8F0] hover:border-[#0033A0]/20 shadow-soft hover:shadow-large transition-all duration-300">
             <div className="flex items-center gap-4 mb-6">
-              <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-[#1e3a5f] group-hover:scale-105 transition-transform">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#0033A0] to-[#1E56B3] flex items-center justify-center group-hover:scale-110 transition-transform">
                 <Clock className="w-7 h-7 text-white" />
               </div>
               <div>
-                <h4 className="text-xl font-bold text-[#1a1a1a]">상담 가능 시간</h4>
-                <p className="text-sm text-[#888]">편한 시간에 연락주세요</p>
+                <h4 className="text-xl font-bold text-[#0F172A]">상담 가능 시간</h4>
+                <p className="text-sm text-[#94A3B8]">편한 시간에 연락주세요</p>
               </div>
             </div>
-            <div className="space-y-4">
-              <div className="flex justify-between items-center p-4 bg-[#1e3a5f]/5 rounded-xl">
+            <div className="space-y-3">
+              <div className="flex justify-between items-center p-4 bg-gradient-to-r from-[#EEF4FF] to-white rounded-xl">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                  <span className="font-medium text-[#333]">평일</span>
+                  <span className="font-semibold text-[#0F172A]">평일</span>
                 </div>
-                <span className="font-bold text-[#1e3a5f]">오전 9시 ~ 오후 8시</span>
+                <span className="font-bold text-[#0033A0]">오전 9시 ~ 오후 8시</span>
               </div>
-              <div className="flex justify-between items-center p-4 bg-[#fafafa] rounded-xl">
-                <span className="text-[#888]">주말/공휴일</span>
-                <span className="text-[#bbb]">휴무</span>
+              <div className="flex justify-between items-center p-4 bg-[#F8FAFC] rounded-xl">
+                <span className="text-[#94A3B8]">주말/공휴일</span>
+                <span className="text-[#94A3B8]">휴무</span>
               </div>
             </div>
           </div>
 
           {/* 체크리스트 */}
-          <div className="group p-8 bg-white rounded-2xl border border-[#eee] hover:border-[#0033A0]/30 shadow-elegant hover:shadow-elegant-lg transition-all duration-300">
+          <div className="group p-8 bg-white rounded-2xl border border-[#E2E8F0] hover:border-[#C9A227]/30 shadow-soft hover:shadow-gold transition-all duration-300">
             <div className="flex items-center gap-4 mb-6">
-              <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-[#0033A0] group-hover:scale-105 transition-transform">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#C9A227] to-[#D4B94E] flex items-center justify-center group-hover:scale-110 transition-transform">
                 <ClipboardList className="w-7 h-7 text-white" />
               </div>
               <div>
-                <h4 className="text-xl font-bold text-[#1a1a1a]">상담 전 체크리스트</h4>
-                <p className="text-sm text-[#888]">준비되면 더 빠른 상담 가능</p>
+                <h4 className="text-xl font-bold text-[#0F172A]">상담 전 체크리스트</h4>
+                <p className="text-sm text-[#94A3B8]">준비되면 더 빠른 상담 가능</p>
               </div>
             </div>
             <ul className="space-y-3">
               {['현재 가입된 보험사와 상품명', '최근 병력 또는 건강 상태', '원하는 보장 범위 (실비, 암, 치매 등)'].map((item, i) => (
-                <li key={i} className="flex items-start gap-3 p-3 bg-[#fafafa] rounded-xl hover:bg-[#0033A0]/5 transition-colors">
-                  <span className="flex items-center justify-center w-7 h-7 text-sm font-bold text-white bg-[#0033A0] rounded-lg flex-shrink-0">
+                <li key={i} className="flex items-start gap-3 p-3 bg-[#FFFDF7] rounded-xl border border-[#C9A227]/10 hover:border-[#C9A227]/30 transition-colors">
+                  <span className="flex items-center justify-center w-7 h-7 text-sm font-bold text-white bg-gradient-to-br from-[#C9A227] to-[#D4B94E] rounded-lg flex-shrink-0">
                     {i + 1}
                   </span>
-                  <span className="text-[#555] pt-0.5">{item}</span>
+                  <span className="text-[#475569] pt-0.5">{item}</span>
                 </li>
               ))}
             </ul>
-            <p className="mt-4 text-sm text-[#888] flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-[#0033A0]" />
+            <p className="mt-4 text-sm text-[#94A3B8] flex items-center gap-2">
+              <CheckCircle className="w-4 h-4 text-[#C9A227]" />
               준비되지 않아도 편하게 문의 주세요
             </p>
           </div>
@@ -78,14 +82,14 @@ export default function Contact() {
 
         {/* 절차 안내 */}
         <div ref={ref} className="mt-24">
-          <h3 className="mb-12 text-2xl font-bold text-center text-[#1a1a1a]">
+          <h3 className="mb-12 text-2xl font-bold text-center text-[#0F172A]">
             상담은 이렇게 진행됩니다
           </h3>
 
           {/* 데스크톱 타임라인 */}
           <div className="hidden lg:block relative">
             {/* 연결선 */}
-            <div className="absolute top-12 left-0 right-0 h-0.5 bg-gradient-to-r from-[#1e3a5f]/20 via-[#1e3a5f] to-[#0033A0] rounded-full" />
+            <div className="absolute top-14 left-0 right-0 h-1 bg-gradient-to-r from-[#0033A0] via-[#C9A227] to-[#0033A0] rounded-full" />
 
             <div className="grid grid-cols-4 gap-4">
               {steps.map(({ num, title, desc, icon: Icon }, i) => (
@@ -96,18 +100,18 @@ export default function Contact() {
                 >
                   {/* 단계 원 */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10">
-                    <div className="w-10 h-10 flex items-center justify-center bg-white rounded-full border-2 border-[#1e3a5f] shadow-md">
-                      <span className="text-sm font-bold text-[#1e3a5f]">{num}</span>
+                    <div className={`w-12 h-12 flex items-center justify-center bg-white rounded-full border-4 ${i === 3 ? 'border-[#C9A227]' : 'border-[#0033A0]'} shadow-medium`}>
+                      <span className={`text-sm font-bold ${i === 3 ? 'text-[#C9A227]' : 'text-[#0033A0]'}`}>{num}</span>
                     </div>
                   </div>
 
                   {/* 카드 */}
-                  <div className="mt-10 p-6 text-center bg-white rounded-2xl border border-[#eee] hover:border-[#1e3a5f]/20 shadow-elegant hover:shadow-elegant-lg transition-all group">
-                    <div className="flex items-center justify-center w-12 h-12 mx-auto mb-4 rounded-xl bg-[#1e3a5f]/5 group-hover:bg-[#1e3a5f]/10 transition-colors">
-                      <Icon className="w-6 h-6 text-[#1e3a5f]" />
+                  <div className="mt-12 p-6 text-center bg-white rounded-2xl border border-[#E2E8F0] hover:border-[#0033A0]/20 shadow-soft hover:shadow-medium transition-all group">
+                    <div className={`flex items-center justify-center w-14 h-14 mx-auto mb-4 rounded-2xl ${i === 3 ? 'bg-gradient-to-br from-[#C9A227] to-[#D4B94E]' : 'bg-gradient-to-br from-[#0033A0] to-[#1E56B3]'} group-hover:scale-110 transition-transform`}>
+                      <Icon className="w-7 h-7 text-white" />
                     </div>
-                    <h4 className="font-bold text-[#1a1a1a]">{title}</h4>
-                    <p className="mt-2 text-sm text-[#888]">{desc}</p>
+                    <h4 className="font-bold text-[#0F172A]">{title}</h4>
+                    <p className="mt-2 text-sm text-[#64748B]">{desc}</p>
                   </div>
                 </div>
               ))}
@@ -119,17 +123,17 @@ export default function Contact() {
             {steps.map(({ num, title, desc }, i) => (
               <div
                 key={num}
-                className={`flex items-start gap-4 p-5 bg-white rounded-2xl border border-[#eee] shadow-elegant ${
+                className={`flex items-start gap-4 p-5 bg-white rounded-2xl border border-[#E2E8F0] shadow-soft ${
                   isVisible ? 'animate-fade-in-up' : 'opacity-0'
                 }`}
                 style={{ animationDelay: `${i * 0.1}s` }}
               >
-                <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#1e3a5f] flex-shrink-0">
+                <div className={`flex items-center justify-center w-14 h-14 rounded-2xl ${i === 3 ? 'bg-gradient-to-br from-[#C9A227] to-[#D4B94E]' : 'bg-gradient-to-br from-[#0033A0] to-[#1E56B3]'} flex-shrink-0`}>
                   <span className="text-lg font-bold text-white">{num}</span>
                 </div>
-                <div>
-                  <h4 className="font-bold text-[#1a1a1a]">{title}</h4>
-                  <p className="mt-1 text-sm text-[#888]">{desc}</p>
+                <div className="pt-1">
+                  <h4 className="font-bold text-[#0F172A]">{title}</h4>
+                  <p className="mt-1 text-sm text-[#64748B]">{desc}</p>
                 </div>
               </div>
             ))}
@@ -138,35 +142,46 @@ export default function Contact() {
 
         {/* CTA */}
         <div className="mt-20">
-          <div className="relative overflow-hidden p-10 lg:p-16 bg-[#1e3a5f] rounded-3xl">
+          <div className="relative overflow-hidden p-10 lg:p-16 bg-gradient-to-br from-[#0033A0] via-[#1E56B3] to-[#0033A0] rounded-3xl">
             {/* 배경 장식 */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#0033A0]/15 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl" />
+            <div className="absolute top-0 right-0 w-80 h-80 bg-[#C9A227]/20 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-2xl" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-white/5 to-transparent rounded-full" />
 
             <div className="relative text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-white/10 rounded-full animate-bounce-subtle">
-                <Phone className="w-4 h-4 text-white" />
-                <span className="text-sm font-medium text-white/80">무료 상담</span>
+              <div className="inline-flex items-center gap-2 px-5 py-2.5 mb-6 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 animate-bounce-gentle">
+                <Phone className="w-4 h-4 text-[#C9A227]" />
+                <span className="text-sm font-medium text-white">무료 상담</span>
               </div>
 
-              <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4">
+              <h3 className="text-2xl lg:text-4xl font-bold text-white mb-4">
                 지금 바로 상담을 시작하세요
               </h3>
-              <p className="text-white/70 mb-8 max-w-md mx-auto">
-                27년 경력의 전문가가 고객님의 상황에 맞는<br className="hidden sm:block" />
+              <p className="text-white/70 mb-10 max-w-lg mx-auto text-lg">
+                27년 경력의 전문가가 고객님의 상황에 맞는
+                <br className="hidden sm:block" />
                 최적의 보험 설계를 도와드립니다
               </p>
 
-              <a
-                href="http://pf.kakao.com/_wxefFn"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 px-10 py-5 text-lg font-bold text-white bg-[#0033A0] rounded-full hover:bg-[#1E56B3] transition-all hover:scale-105 shadow-lg shadow-[#0033A0]/30"
-              >
-                <MessageCircle className="w-6 h-6" />
-                카카오톡으로 상담하기
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </a>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="http://pf.kakao.com/_wxefFn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-bold text-[#0033A0] bg-white rounded-full hover:bg-[#F8FAFC] transition-all hover:scale-105 shadow-elevated"
+                >
+                  <MessageCircle className="w-6 h-6" />
+                  카카오톡으로 상담하기
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+                <a
+                  href="tel:010-1234-5678"
+                  className="inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-semibold text-white bg-white/10 backdrop-blur-sm rounded-full border border-white/30 hover:bg-white/20 transition-all"
+                >
+                  <Phone className="w-5 h-5" />
+                  전화로 상담하기
+                </a>
+              </div>
             </div>
           </div>
         </div>

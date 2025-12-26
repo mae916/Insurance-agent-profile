@@ -45,13 +45,16 @@ function NavBar({ sections }: ISections) {
           <li key={section.id}>
             <a
               href={`#${section.id}`}
-              className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 ${
+              className={`relative px-5 py-2.5 text-sm font-medium rounded-full transition-all duration-300 ${
                 active === section.id
-                  ? 'text-[#1e3a5f] bg-[#1e3a5f]/5'
-                  : 'text-[#666] hover:text-[#1a1a1a]'
+                  ? 'text-[#0033A0] bg-[#0033A0]/5'
+                  : 'text-[#64748B] hover:text-[#0F172A] hover:bg-[#F8FAFC]'
               }`}
             >
               {section.label}
+              {active === section.id && (
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-[#C9A227] rounded-full" />
+              )}
             </a>
           </li>
         ))}
