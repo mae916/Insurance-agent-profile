@@ -41,7 +41,7 @@ function Header({ sections }: ISections) {
           href="http://pf.kakao.com/_wxefFn"
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden lg:flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-[#1e3a5f] rounded-full hover:bg-[#2d5a87] transition-colors"
+          className="hidden lg:flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-[#0033A0] rounded-full hover:bg-[#1E56B3] transition-colors"
         >
           <MessageCircle className="w-4 h-4" />
           상담하기

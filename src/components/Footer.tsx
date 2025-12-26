@@ -48,7 +48,7 @@ function Footer() {
       {/* 맨 위로 버튼 */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-6 right-6 p-3 text-white bg-[#1e3a5f] rounded-full shadow-lg hover:bg-[#2d5a87] transition-colors"
+        className="fixed bottom-6 right-6 p-3 text-white bg-[#0033A0] rounded-full shadow-lg hover:bg-[#1E56B3] transition-colors"
         aria-label="맨 위로"
       >
         <ChevronUp className="w-5 h-5" />
