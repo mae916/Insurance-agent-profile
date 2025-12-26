@@ -1,225 +1,93 @@
-import { CalendarClock, Users, FileCheck2 } from 'lucide-react';
-import man from '../assets/silversu.png';
+import man from '../assets/silversu.webp';
 import Title from './Title';
 import { useInView } from '../hooks/useInView';
 
-const InfoCard = ({ icon, number, label, desc, className = '' }: any) => (
-  <div className={`flex flex-col text-white w-fit ${className}`}>
-    <div className="flex items-center">
-      <div className="p-4 mr-8 bg-white rounded-full text-accent">{icon}</div>
-      <div>
-        <h3 className="text-3xl font-extrabold tracking-wide lg:text-3xl">
-          {number}
-        </h3>
-        <p className="mt-3 text-xl lg:text-xl font-midium">{label}</p>
-      </div>
-    </div>
-    <p className="mt-8 text-lg lg:leading-relaxed lg:text-lg text-white/80">
-      {desc}
-    </p>
-  </div>
-);
+const awards = {
+  excellent: ['2009', '2011', '2012', '2014', '2015', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+  amc: ['2010'],
+  longService: ['2009', '2013', '2019', '2024'],
+};
 
 function About() {
   const { ref, isVisible } = useInView<HTMLImageElement>();
 
   return (
-    <section
-      id="about"
-      className="py-16 mb-0 bg-white lg:py-24 lg:relative scroll-mt-10"
-    >
-      <article className="w-[90%] mx-auto lg:w-3/4">
-        <Title title="설계사 소개"></Title>
-        <div className="mt-16 lg:justify-between lg:items-center lg:flex">
-          <img
-            ref={ref}
-            src={man}
-            width={500}
-            height={650}
-            alt="사람 이미지"
-            className={`mx-auto object-cover lg:h-[650px] h-[550px] object-top lg:mr-20 ${
-              isVisible ? 'animate-zoom-in' : 'opacity-0'
-            }`}
-          />
+    <section id="about" className="py-24 bg-white scroll-mt-10">
+      <div className="w-[90%] mx-auto lg:w-3/4">
+        <Title title="설계사 소개" subtitle="27년간 고객과 함께해온 김은수 설계사입니다" />
 
-          {/* 주요 정보 카드 - mobile */}
-          <article className="block lg:hidden">
-            <InfoCard
-              icon={<CalendarClock className="w-9 h-9" />}
-              number="27년차"
-              label="설계 경력"
-              desc={
-                <>
-                  보험은 단순히 가입이 아닌 설명이 필요합니다.
-                  <br className="hidden lg:block" /> 실제 사례와 근거를 바탕으로
-                  상담해드립니다.
-                </>
-              }
-              className={
-                'rounded-[40px] bg-accent py-5 px-7 w-full animate-fade-in-up transition hover:shadow-md hover:-translate-y-1'
-              }
+        <div className="mt-16 lg:flex lg:gap-20 lg:items-start">
+          {/* 이미지 */}
+          <div className="flex-shrink-0 mb-12 lg:mb-0">
+            <img
+              ref={ref}
+              src={man}
+              alt="김은수 설계사"
+              className={`mx-auto rounded-3xl object-cover h-[400px] lg:h-[500px] w-full max-w-sm object-top shadow-2xl shadow-slate-900/20 ${
+                isVisible ? 'animate-zoom-in' : 'opacity-0'
+              }`}
             />
-            <InfoCard
-              icon={<Users className="w-9 h-9" />}
-              number="737명"
-              label="현재 고객 수"
-              desc={
-                <>
-                  현재 737명 이상의 고객과 함께하고 있습니다.
-                  <br className="hidden lg:block" /> 한 분 한 분 끝까지 책임지는
-                  마음으로 일합니다.
-                </>
-              }
-              className={
-                'rounded-[40px] bg-accent py-5 px-7 w-full animate-fade-in-up transition hover:shadow-md hover:-translate-y-1 mt-1'
-              }
-            />
-            <InfoCard
-              icon={<FileCheck2 className="w-9 h-9" />}
-              number="1500건"
-              label="현재 관리 중인 계약 건"
-              desc={
-                <>
-                  단순 안내에서 끝나지 않습니다.
-                  <br />
-                  고객이 보험금을 받을 수 있도록
-                  <br />
-                  끝까지 도와드립니다.
-                </>
-              }
-              className={
-                'rounded-[40px] bg-accent py-5 px-7 w-full animate-fade-in-up transition hover:shadow-md hover:-translate-y-1 mt-1'
-              }
-            />
-          </article>
-          <div>
-            {/* 소개 문구 */}
-            <div className="mt-12 mb-16 lg:mt-0">
-              <p className="text-lg leading-8 whitespace-pre-line text-black/80">
-                27년간 한 길을 걸어온 설계사 김은수입니다.
-                <br />
-                보험은 설명이 필요한 계약이며, 고객님의 삶에 꼭 필요한 준비라고
-                믿습니다.
-                <br />
-                고객 한 분 한 분의 마음을 소중히 생각하며, 끝까지 책임지는
-                상담을 약속드립니다.
+          </div>
+
+          {/* 소개 내용 */}
+          <div className="flex-1">
+            <div className="mb-10">
+              <h3 className="text-2xl font-bold text-slate-900 lg:text-3xl">
+                끝까지 책임지는 상담을<br />약속드립니다
+              </h3>
+              <p className="mt-6 text-lg leading-relaxed text-slate-600">
+                보험은 단순한 상품이 아닌, 고객님의 미래를 위한 준비입니다.
+                저는 27년간 737명의 고객분들과 함께하며, 가입부터 보험금 수령까지
+                모든 과정을 직접 도와드리고 있습니다.
+              </p>
+              <p className="mt-4 text-lg leading-relaxed text-slate-600">
+                불필요한 특약은 과감히 줄이고, 정말 필요한 보장만 남기는 것.
+                그것이 제가 27년간 지켜온 원칙입니다.
               </p>
             </div>
-            {/* 수상 이력 및 인증 */}
 
-            <div className="mb-12 space-y-6">
-              <h3 className="text-xl font-bold text-primary">
-                수상 이력 및 인증
-              </h3>
+            {/* 수상 이력 */}
+            <div className="p-8 bg-slate-50 rounded-2xl">
+              <h4 className="mb-6 text-lg font-semibold text-slate-900">수상 및 인증 이력</h4>
 
-              {/* 손해보험협회 우수 인증 */}
-              <div>
-                <p className="mb-2 font-medium text-black/70">
-                  ✔ 손해보험협회 우수 인증
-                </p>
-                <ul className="flex flex-wrap gap-2">
-                  {[
-                    '2009',
-                    '2011',
-                    '2012',
-                    '2014',
-                    '2015',
-                    '2018',
-                    '2019',
-                    '2020',
-                    '2021',
-                    '2022',
-                    '2023',
-                    '2024',
-                    '2025',
-                  ].map((year) => (
-                    <li
-                      key={year}
-                      className="px-3 py-1 text-sm font-medium text-white bg-blue-600 rounded-full shadow-sm"
-                    >
-                      {year}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <div className="space-y-6">
+                <div>
+                  <p className="mb-3 text-sm font-medium text-slate-500">손해보험협회 우수 인증</p>
+                  <div className="flex flex-wrap gap-2">
+                    {awards.excellent.map((year) => (
+                      <span key={year} className="px-3 py-1.5 text-sm font-medium text-blue-700 bg-blue-100 rounded-lg">
+                        {year}
+                      </span>
+                    ))}
+                  </div>
+                </div>
 
-              {/* AMC 수상 */}
-              <div>
-                <p className="mb-2 font-medium text text-black/70">
-                  🏆 AMC상 수상
-                </p>
-                <ul className="flex flex-wrap gap-2">
-                  {['2010'].map((year) => (
-                    <li
-                      key={year}
-                      className="px-3 py-1 text-sm font-medium text-white bg-yellow-500 rounded-full shadow-sm"
-                    >
-                      {year}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                <div>
+                  <p className="mb-3 text-sm font-medium text-slate-500">AMC상 수상</p>
+                  <div className="flex flex-wrap gap-2">
+                    {awards.amc.map((year) => (
+                      <span key={year} className="px-3 py-1.5 text-sm font-medium text-amber-700 bg-amber-100 rounded-lg">
+                        {year}
+                      </span>
+                    ))}
+                  </div>
+                </div>
 
-              {/* 장기활동상 수상 */}
-              <div>
-                <p className="mb-2 font-medium text text-black/70">
-                  📌 장기활동상 수상
-                </p>
-                <ul className="flex flex-wrap gap-2">
-                  {['2009', '2013', '2019', '2024'].map((year) => (
-                    <li
-                      key={year}
-                      className="px-3 py-1 text-sm font-medium text-white bg-pink-500 rounded-full shadow-sm"
-                    >
-                      {year}
-                    </li>
-                  ))}
-                </ul>
+                <div>
+                  <p className="mb-3 text-sm font-medium text-slate-500">장기활동상</p>
+                  <div className="flex flex-wrap gap-2">
+                    {awards.longService.map((year) => (
+                      <span key={year} className="px-3 py-1.5 text-sm font-medium text-rose-700 bg-rose-100 rounded-lg">
+                        {year}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </article>
-      {/* 주요 정보 카드-pc */}
-      <article className="lg:flex lg:justify-between lg:px-16 lg:py-12 lg:w-[80%] m-auto rounded-[40px] bg-accent hidden">
-        <InfoCard
-          icon={<CalendarClock className="w-10 h-10" />}
-          number="27년차"
-          label="설계 경력"
-          desc={
-            <>
-              보험은 단순히 가입이 아닌 설명이 필요합니다. <br /> 실제 사례와
-              근거를 바탕으로 상담해드립니다.
-            </>
-          }
-        />
-        <InfoCard
-          icon={<Users className="w-10 h-10" />}
-          number="737명"
-          label="현재 고객 수"
-          desc={
-            <>
-              현재 737명 이상의 고객과 함께하고 있습니다. <br /> 한 분 한 분
-              끝까지 책임지는 마음으로 일합니다.
-            </>
-          }
-          className="border-white border-opacity-50 lg:px-8 lg:border-l lg:border-r"
-        />
-        <InfoCard
-          icon={<FileCheck2 className="w-10 h-10" />}
-          number="1500건"
-          label="현재 관리 중인 계약 건"
-          desc={
-            <>
-              단순 안내에서 끝나지 않습니다.
-              <br />
-              고객이 보험금을 받을 수 있도록
-              <br />
-              끝까지 도와드립니다.
-            </>
-          }
-        />
-      </article>
+      </div>
     </section>
   );
 }
