@@ -49,9 +49,9 @@ export default function Contact() {
           </div>
 
           {/* 체크리스트 */}
-          <div className="group p-8 bg-white rounded-2xl border border-[#eee] hover:border-[#c9a962]/30 shadow-elegant hover:shadow-elegant-lg transition-all duration-300">
+          <div className="group p-8 bg-white rounded-2xl border border-[#eee] hover:border-[#0033A0]/30 shadow-elegant hover:shadow-elegant-lg transition-all duration-300">
             <div className="flex items-center gap-4 mb-6">
-              <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-[#c9a962] group-hover:scale-105 transition-transform">
+              <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-[#0033A0] group-hover:scale-105 transition-transform">
                 <ClipboardList className="w-7 h-7 text-white" />
               </div>
               <div>
@@ -61,8 +61,8 @@ export default function Contact() {
             </div>
             <ul className="space-y-3">
               {['현재 가입된 보험사와 상품명', '최근 병력 또는 건강 상태', '원하는 보장 범위 (실비, 암, 치매 등)'].map((item, i) => (
-                <li key={i} className="flex items-start gap-3 p-3 bg-[#fafafa] rounded-xl hover:bg-[#c9a962]/5 transition-colors">
-                  <span className="flex items-center justify-center w-7 h-7 text-sm font-bold text-white bg-[#c9a962] rounded-lg flex-shrink-0">
+                <li key={i} className="flex items-start gap-3 p-3 bg-[#fafafa] rounded-xl hover:bg-[#0033A0]/5 transition-colors">
+                  <span className="flex items-center justify-center w-7 h-7 text-sm font-bold text-white bg-[#0033A0] rounded-lg flex-shrink-0">
                     {i + 1}
                   </span>
                   <span className="text-[#555] pt-0.5">{item}</span>
@@ -70,7 +70,7 @@ export default function Contact() {
               ))}
             </ul>
             <p className="mt-4 text-sm text-[#888] flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-[#c9a962]" />
+              <CheckCircle className="w-4 h-4 text-[#0033A0]" />
               준비되지 않아도 편하게 문의 주세요
             </p>
           </div>
@@ -85,7 +85,7 @@ export default function Contact() {
           {/* 데스크톱 타임라인 */}
           <div className="hidden lg:block relative">
             {/* 연결선 */}
-            <div className="absolute top-12 left-0 right-0 h-0.5 bg-gradient-to-r from-[#1e3a5f]/20 via-[#1e3a5f] to-[#c9a962] rounded-full" />
+            <div className="absolute top-12 left-0 right-0 h-0.5 bg-gradient-to-r from-[#1e3a5f]/20 via-[#1e3a5f] to-[#0033A0] rounded-full" />
 
             <div className="grid grid-cols-4 gap-4">
               {steps.map(({ num, title, desc, icon: Icon }, i) => (
@@ -140,12 +140,12 @@ export default function Contact() {
         <div className="mt-20">
           <div className="relative overflow-hidden p-10 lg:p-16 bg-[#1e3a5f] rounded-3xl">
             {/* 배경 장식 */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#c9a962]/10 rounded-full blur-3xl" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#0033A0]/15 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl" />
 
             <div className="relative text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-white/10 rounded-full">
-                <Phone className="w-4 h-4 text-[#c9a962]" />
+              <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-white/10 rounded-full animate-bounce-subtle">
+                <Phone className="w-4 h-4 text-white" />
                 <span className="text-sm font-medium text-white/80">무료 상담</span>
               </div>
 
@@ -161,11 +161,11 @@ export default function Contact() {
                 href="http://pf.kakao.com/_wxefFn"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-10 py-5 text-lg font-bold text-[#1e3a5f] bg-[#c9a962] rounded-full hover:bg-[#dfc88a] transition-all hover:scale-105 shadow-lg"
+                className="group inline-flex items-center gap-3 px-10 py-5 text-lg font-bold text-white bg-[#0033A0] rounded-full hover:bg-[#1E56B3] transition-all hover:scale-105 shadow-lg shadow-[#0033A0]/30"
               >
                 <MessageCircle className="w-6 h-6" />
                 카카오톡으로 상담하기
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
           </div>

@@ -24,7 +24,7 @@ function About() {
             className={`flex-shrink-0 mb-12 lg:mb-0 ${isVisible ? 'animate-zoom-in' : 'opacity-0'}`}
           >
             <div className="relative mx-auto w-full max-w-sm overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-b from-[#1e3a5f]/5 to-transparent rounded-full scale-95" />
+              <div className="absolute inset-0 bg-gradient-to-b from-[#0033A0]/5 to-transparent rounded-full scale-95" />
               <img
                 src={man}
                 alt="김은수 설계사"
@@ -55,17 +55,17 @@ function About() {
               {/* 손해보험협회 우수 인증 */}
               <div className="p-6 bg-[#fafbfc] rounded-2xl border border-[#eee]">
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 rounded-xl bg-[#1e3a5f] flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-xl bg-[#0033A0] flex items-center justify-center">
                     <Award className="w-5 h-5 text-white" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-[#1a1a1a]">손해보험협회 우수 인증</h4>
-                    <p className="text-sm text-[#c9a962] font-medium">{awards.excellent.length}회 선정</p>
+                    <p className="text-sm text-[#0033A0] font-medium">{awards.excellent.length}회 선정</p>
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {awards.excellent.map((year) => (
-                    <span key={year} className="px-3 py-1.5 text-sm text-[#1e3a5f] bg-white rounded-lg border border-[#1e3a5f]/10">
+                    <span key={year} className="px-3 py-1.5 text-sm text-[#0033A0] bg-white rounded-lg border border-[#0033A0]/10">
                       {year}
                     </span>
                   ))}
@@ -74,9 +74,9 @@ function About() {
 
               {/* AMC상 & 장기활동상 */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="p-6 bg-[#fafbfc] rounded-2xl border border-[#eee]">
+                <div className="p-6 bg-[#fafbfc] rounded-2xl border border-[#eee] hover:border-[#FF6B35]/20 transition-colors">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-[#c9a962] flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-xl bg-[#FF6B35] flex items-center justify-center">
                       <Trophy className="w-5 h-5 text-white" />
                     </div>
                     <div>
@@ -86,7 +86,7 @@ function About() {
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {awards.amc.map((year) => (
-                      <span key={year} className="px-3 py-1.5 text-sm text-[#c9a962] bg-white rounded-lg border border-[#c9a962]/20">
+                      <span key={year} className="px-3 py-1.5 text-sm text-[#FF6B35] bg-white rounded-lg border border-[#FF6B35]/20">
                         {year}
                       </span>
                     ))}

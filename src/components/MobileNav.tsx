@@ -35,7 +35,7 @@ function MobileNav({ sections, isOpen, onClose }: MobileNavProps) {
             target="_blank"
             rel="noopener noreferrer"
             onClick={onClose}
-            className="flex items-center justify-center gap-2 w-full py-3.5 font-semibold text-white bg-[#1e3a5f] rounded-xl"
+            className="flex items-center justify-center gap-2 w-full py-3.5 font-semibold text-white bg-[#0033A0] hover:bg-[#1E56B3] transition-colors rounded-xl"
           >
             <MessageCircle className="w-4 h-4" />
             카카오톡 상담

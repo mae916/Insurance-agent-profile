@@ -44,9 +44,9 @@ const CaseCard = ({
     };
     if (isNewJoin) return {
       icon: FileText,
-      bgColor: 'bg-[#c9a962]',
-      lightBg: 'bg-[#c9a962]/10',
-      textColor: 'text-[#a08840]',
+      bgColor: 'bg-[#0033A0]',
+      lightBg: 'bg-[#0033A0]/10',
+      textColor: 'text-[#0033A0]',
       label: '신규설계',
     };
     return {
@@ -106,7 +106,7 @@ const CaseCard = ({
 
           {discount && (
             <div className="mt-4 pt-4 border-t border-[#eee] flex items-center justify-center gap-2">
-              <Zap className="w-4 h-4 text-[#c9a962]" />
+              <Zap className="w-4 h-4 text-[#0033A0]" />
               <span className="text-lg font-bold text-[#1e3a5f]">
                 {discount}
               </span>
@@ -117,9 +117,9 @@ const CaseCard = ({
 
       {/* 신규 가입 */}
       {isNewJoin && plan && (
-        <div className="p-5 bg-[#c9a962]/5 rounded-xl border border-[#c9a962]/20">
+        <div className="p-5 bg-[#0033A0]/5 rounded-xl border border-[#0033A0]/20">
           <div className="flex items-start gap-3">
-            <CheckCircle2 className="w-5 h-5 text-[#a08840] mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-5 h-5 text-[#0033A0] mt-0.5 flex-shrink-0" />
             <p className="text-sm font-medium text-[#333]">{plan}</p>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { ArrowRight, Award, Shield, Heart, CheckCircle } from 'lucide-react';
+import { ArrowRight, Award, Shield, Heart, CheckCircle, Sparkles } from 'lucide-react';
 import man from '../assets/silversu.webp';
 import { useInView } from '../hooks/useInView';
 import { useCountUp } from '../hooks/useCountUp';
@@ -12,20 +12,20 @@ function Home() {
   return (
     <section
       id="home"
-      className="w-full min-h-screen pt-28 pb-24 bg-[#fafbfc] scroll-mt-24"
+      className="w-full min-h-screen pt-28 pb-24 bg-gradient-to-b from-[#fafbfc] to-white scroll-mt-24 overflow-hidden"
     >
       <div className="flex flex-col items-center justify-between mx-auto lg:flex-row lg:w-3/4 w-[90%] gap-16 lg:gap-20">
         {/* 텍스트 영역 */}
         <div className="flex flex-col items-center w-full text-center lg:items-start lg:text-left lg:w-1/2">
           {/* 뱃지 */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 text-sm font-medium text-[#1e3a5f] bg-[#1e3a5f]/5 rounded-full border border-[#1e3a5f]/10">
-            <Award className="w-4 h-4 text-[#c9a962]" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 text-sm font-medium text-[#0033A0] bg-[#0033A0]/5 rounded-full border border-[#0033A0]/10 animate-fade-in-down">
+            <Award className="w-4 h-4 text-[#0033A0]" />
             <span>13년 연속 손해보험협회 우수 인증</span>
           </div>
 
           <h1 className="text-4xl font-bold leading-tight text-[#1a1a1a] lg:text-[52px] lg:leading-tight tracking-tight">
             보험은 결국<br />
-            <span className="text-[#1e3a5f]">사람</span>입니다
+            <span className="text-[#0033A0]">사람</span>입니다
           </h1>
 
           <p className="mt-6 text-lg leading-relaxed text-[#666] max-w-md">
@@ -35,10 +35,14 @@ function Home() {
 
           {/* 체크 포인트 */}
           <div className="flex flex-col gap-3 mt-10">
-            {['불필요한 특약 정리', '핵심 보장만 설계', '가입 후 평생 관리'].map((text) => (
-              <div key={text} className="flex items-center gap-3">
-                <div className="w-5 h-5 rounded-full bg-[#1e3a5f]/10 flex items-center justify-center">
-                  <CheckCircle className="w-3.5 h-3.5 text-[#1e3a5f]" />
+            {['불필요한 특약 정리', '핵심 보장만 설계', '가입 후 평생 관리'].map((text, i) => (
+              <div
+                key={text}
+                className="flex items-center gap-3 animate-fade-in-up"
+                style={{ animationDelay: `${0.2 + i * 0.1}s` }}
+              >
+                <div className="w-5 h-5 rounded-full bg-[#0033A0]/10 flex items-center justify-center">
+                  <CheckCircle className="w-3.5 h-3.5 text-[#0033A0]" />
                 </div>
                 <span className="text-[#444]">{text}</span>
               </div>
@@ -50,10 +54,11 @@ function Home() {
             href="http://pf.kakao.com/_wxefFn"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 mt-10 text-base font-semibold text-white bg-[#1e3a5f] rounded-full hover:bg-[#2d5a87] transition-all duration-300 shadow-lg shadow-[#1e3a5f]/20"
+            className="group inline-flex items-center gap-3 px-8 py-4 mt-10 text-base font-semibold text-white bg-[#0033A0] rounded-full hover:bg-[#1E56B3] transition-all duration-300 shadow-lg shadow-[#0033A0]/25 hover:shadow-xl hover:shadow-[#0033A0]/35 hover:-translate-y-1"
           >
+            <Sparkles className="w-5 h-5" />
             무료 상담 신청
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
 
           {/* 통계 */}
@@ -65,11 +70,15 @@ function Home() {
               { num: hasStarted ? yearsCount : 0, unit: '년', label: '경력' },
               { num: hasStarted ? clientsCount : 0, unit: '명', label: '고객' },
               { num: hasStarted ? contractsCount.toLocaleString() : '0', unit: '건', label: '계약' },
-            ].map(({ num, unit, label }) => (
-              <div key={label} className="text-center lg:text-left">
+            ].map(({ num, unit, label }, i) => (
+              <div
+                key={label}
+                className="text-center lg:text-left animate-fade-in-up"
+                style={{ animationDelay: `${0.4 + i * 0.1}s` }}
+              >
                 <p className="text-3xl lg:text-4xl font-bold text-[#1a1a1a] tabular-nums">
                   {num}
-                  <span className="text-xl text-[#c9a962] ml-0.5">{unit}</span>
+                  <span className="text-xl text-[#0033A0] ml-0.5">{unit}</span>
                 </p>
                 <p className="mt-1 text-sm text-[#888]">{label}</p>
               </div>
@@ -80,8 +89,12 @@ function Home() {
         {/* 이미지 영역 */}
         <div className="w-full lg:w-1/2">
           <div className="relative mx-auto max-w-md">
-            {/* 배경 */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#1e3a5f]/5 to-transparent rounded-full scale-110" />
+            {/* 배경 장식 */}
+            <div className="absolute -top-8 -right-8 w-32 h-32 bg-[#0033A0]/10 rounded-full blur-2xl animate-pulse" />
+            <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-[#0033A0]/5 rounded-full blur-xl" />
+
+            {/* 배경 원 */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0033A0]/5 to-transparent rounded-full scale-110" />
             <img
               ref={ref}
               src={man}
@@ -113,13 +126,14 @@ function Home() {
               title: '검증된 전문성',
               desc: '27년 경력과 다수의 수상 이력',
             },
-          ].map(({ icon: Icon, title, desc }) => (
+          ].map(({ icon: Icon, title, desc }, i) => (
             <div
               key={title}
-              className="group p-7 bg-white rounded-2xl border border-[#eee] hover:border-[#1e3a5f]/20 transition-all duration-300 hover:shadow-elegant"
+              className="group p-7 bg-white rounded-2xl border border-[#eee] hover:border-[#0033A0]/20 transition-all duration-500 hover:shadow-elegant-lg hover:-translate-y-2 cursor-default animate-fade-in-up"
+              style={{ animationDelay: `${0.5 + i * 0.1}s` }}
             >
-              <div className="w-12 h-12 rounded-xl bg-[#1e3a5f]/5 flex items-center justify-center mb-5 group-hover:bg-[#1e3a5f]/10 transition-colors">
-                <Icon className="w-6 h-6 text-[#1e3a5f]" />
+              <div className="w-12 h-12 rounded-xl bg-[#0033A0]/5 flex items-center justify-center mb-5 transition-all duration-300 group-hover:bg-[#0033A0]/10 group-hover:scale-110">
+                <Icon className="w-6 h-6 text-[#0033A0]" />
               </div>
               <h3 className="text-lg font-semibold text-[#1a1a1a]">{title}</h3>
               <p className="mt-2 text-[#666] text-sm leading-relaxed">{desc}</p>
