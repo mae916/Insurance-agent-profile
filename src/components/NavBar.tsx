@@ -29,8 +29,6 @@ function NavBar({ sections }: ISections) {
 
     window.addEventListener('hashchange', handleHashChange);
     window.addEventListener('scroll', handleScroll, { passive: true });
-
-    // 초기 실행
     handleHashChange();
     handleScroll();
 
@@ -41,16 +39,16 @@ function NavBar({ sections }: ISections) {
   }, [sections, active]);
 
   return (
-    <nav className="hidden w-2/5 lg:block">
-      <ul className="flex items-center justify-between text-xl">
+    <nav className="hidden lg:block">
+      <ul className="flex items-center gap-1">
         {sections.map((section) => (
           <li key={section.id}>
             <a
               href={`#${section.id}`}
-              className={`transition-colors ${
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
                 active === section.id
-                  ? 'text-accent font-bold'
-                  : 'text-black/70'
+                  ? 'text-blue-600 bg-blue-50'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
               }`}
             >
               {section.label}
