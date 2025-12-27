@@ -4,14 +4,23 @@ interface UseCountUpOptions {
   end: number;
   duration?: number;
   startOnView?: boolean;
+  startWhen?: boolean;
 }
 
-export function useCountUp({ end, duration = 2000, startOnView = true }: UseCountUpOptions) {
+export function useCountUp({ end, duration = 2000, startOnView = true, startWhen }: UseCountUpOptions) {
   const [count, setCount] = useState(0);
   const [hasStarted, setHasStarted] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
+  // startWhen이 제공되면 그것을 사용, 아니면 IntersectionObserver 사용
   useEffect(() => {
+    if (startWhen !== undefined) {
+      if (startWhen && !hasStarted) {
+        setHasStarted(true);
+      }
+      return;
+    }
+
     if (!startOnView) {
       setHasStarted(true);
       return;
@@ -31,7 +40,7 @@ export function useCountUp({ end, duration = 2000, startOnView = true }: UseCoun
     }
 
     return () => observer.disconnect();
-  }, [hasStarted, startOnView]);
+  }, [hasStarted, startOnView, startWhen]);
 
   useEffect(() => {
     if (!hasStarted) return;

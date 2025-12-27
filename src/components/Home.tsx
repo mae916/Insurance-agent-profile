@@ -6,8 +6,8 @@ import { useCountUp } from '../hooks/useCountUp';
 function Home() {
   const { ref, isVisible } = useInView<HTMLImageElement>();
   const { count: yearsCount, ref: statsRef, hasStarted } = useCountUp({ end: 27 });
-  const { count: clientsCount } = useCountUp({ end: 737, duration: 2500 });
-  const { count: awardsCount } = useCountUp({ end: 13, duration: 2000 });
+  const { count: clientsCount } = useCountUp({ end: 737, duration: 2500, startWhen: hasStarted });
+  const { count: awardsCount } = useCountUp({ end: 13, duration: 2000, startWhen: hasStarted });
 
   return (
     <section
@@ -69,11 +69,11 @@ function Home() {
               href="http://pf.kakao.com/_wxefFn"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-3 px-8 py-4 text-base font-semibold text-white rounded-full bg-gradient-to-r from-[#0033A0] to-[#1E56B3] hover:from-[#002277] hover:to-[#0033A0] transition-all duration-300 shadow-blue hover:shadow-elevated hover:-translate-y-1"
+              className="group inline-flex items-center justify-center gap-4 px-12 py-5 text-lg font-bold text-white rounded-full bg-gradient-to-r from-[#0033A0] to-[#1E56B3] hover:from-[#002277] hover:to-[#0033A0] transition-all duration-300 shadow-blue hover:shadow-elevated hover:-translate-y-1"
             >
-              <Sparkles className="w-5 h-5" />
+              <Sparkles className="w-6 h-6" />
               무료 상담 신청
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
 
@@ -83,9 +83,9 @@ function Home() {
             className="grid grid-cols-3 gap-8 mt-14 pt-10 border-t border-[#E2E8F0] w-full max-w-md lg:max-w-none"
           >
             {[
-              { num: hasStarted ? yearsCount : 0, unit: '년', label: '보험 경력', color: 'text-[#0033A0]' },
-              { num: hasStarted ? clientsCount : 0, unit: '명', label: '관리 고객', color: 'text-[#0033A0]' },
-              { num: hasStarted ? awardsCount : 0, unit: '회', label: '우수 인증', color: 'text-[#C9A227]' },
+              { num: yearsCount, unit: '년', label: '보험 경력', color: 'text-[#0033A0]' },
+              { num: clientsCount, unit: '명', label: '관리 고객', color: 'text-[#0033A0]' },
+              { num: awardsCount, unit: '회', label: '우수 인증', color: 'text-[#C9A227]' },
             ].map(({ num, unit, label, color }, i) => (
               <div
                 key={label}
