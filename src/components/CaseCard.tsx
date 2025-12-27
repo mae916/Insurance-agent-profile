@@ -128,32 +128,37 @@ const CaseCard = ({
 
       {/* 특수 상황 - 타임라인 스타일 */}
       {isSpecial && issue && action && result && (
-        <div className="relative pl-8 space-y-4">
-          {/* 타임라인 라인 - 원 중심에 맞춤 */}
-          <div className="absolute left-[11px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-[#94A3B8] via-[#C9A227] to-[#0033A0]" />
-
+        <div className="space-y-4">
           {/* 문제 */}
-          <div className="relative">
-            <div className="absolute -left-[25px] top-4 w-4 h-4 bg-[#94A3B8] rounded-full border-[3px] border-white shadow-md z-10" />
-            <div className="p-4 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0]">
+          <div className="flex items-start gap-4">
+            <div className="flex flex-col items-center">
+              <div className="w-3 h-3 bg-[#94A3B8] rounded-full border-2 border-white shadow-md flex-shrink-0" />
+              <div className="w-[2px] flex-1 bg-gradient-to-b from-[#94A3B8] to-[#C9A227] min-h-[20px]" />
+            </div>
+            <div className="flex-1 p-4 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0] -mt-1">
               <p className="text-xs font-bold text-[#94A3B8] uppercase tracking-wider mb-1">문제 상황</p>
               <p className="text-sm text-[#475569]">{issue}</p>
             </div>
           </div>
 
           {/* 조치 */}
-          <div className="relative">
-            <div className="absolute -left-[25px] top-4 w-4 h-4 bg-[#C9A227] rounded-full border-[3px] border-white shadow-md z-10" />
-            <div className="p-4 bg-[#FFFDF7] rounded-xl border border-[#C9A227]/10">
+          <div className="flex items-start gap-4 -mt-2">
+            <div className="flex flex-col items-center">
+              <div className="w-3 h-3 bg-[#C9A227] rounded-full border-2 border-white shadow-md flex-shrink-0" />
+              <div className="w-[2px] flex-1 bg-gradient-to-b from-[#C9A227] to-[#0033A0] min-h-[20px]" />
+            </div>
+            <div className="flex-1 p-4 bg-[#FFFDF7] rounded-xl border border-[#C9A227]/10 -mt-1">
               <p className="text-xs font-bold text-[#C9A227] uppercase tracking-wider mb-1">조치 내용</p>
               <p className="text-sm text-[#475569]">{action}</p>
             </div>
           </div>
 
           {/* 결과 */}
-          <div className="relative">
-            <div className="absolute -left-[25px] top-4 w-4 h-4 bg-[#0033A0] rounded-full border-[3px] border-white shadow-md z-10" />
-            <div className="p-4 bg-[#EEF4FF] rounded-xl border border-[#0033A0]/10">
+          <div className="flex items-start gap-4 -mt-2">
+            <div className="flex flex-col items-center">
+              <div className="w-3 h-3 bg-[#0033A0] rounded-full border-2 border-white shadow-md flex-shrink-0" />
+            </div>
+            <div className="flex-1 p-4 bg-[#EEF4FF] rounded-xl border border-[#0033A0]/10 -mt-1">
               <p className="text-xs font-bold text-[#0033A0] uppercase tracking-wider mb-1">해결 결과</p>
               <p className="text-sm font-medium text-[#0F172A]">{result}</p>
             </div>
