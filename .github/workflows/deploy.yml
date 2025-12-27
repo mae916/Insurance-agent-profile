@@ -21,16 +21,9 @@ jobs:
           script: |
             set -e
 
-            echo "📦 Updating Insurance-agent-profile repository..."
-            if [ -d ~/Insurance-agent-profile/.git ]; then
-              cd ~/Insurance-agent-profile
-              git remote set-url origin https://github.com/mae916/Insurance-agent-profile.git
-              git fetch origin
-              git reset --hard origin/main
-            else
-              rm -rf ~/Insurance-agent-profile
-              git clone https://github.com/mae916/Insurance-agent-profile.git ~/Insurance-agent-profile
-            fi
+            echo "📦 Cloning Insurance-agent-profile repository..."
+            rm -rf ~/Insurance-agent-profile
+            git clone --depth 1 https://github.com/mae916/Insurance-agent-profile.git ~/Insurance-agent-profile
 
             cd ~/Insurance-agent-profile
 
