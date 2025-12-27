@@ -1,14 +1,8 @@
 version: '3.8'
 
-# 보험설계사 프로필 개별 실행용 Docker Compose
-# 단독 실행: docker-compose up -d
-# 통합 실행: mycrojet/docker-compose.yml 사용
-
+# 보험설계사 프로필 - 외부 네트워크 사용
+# otdam의 nginx-proxy와 통신하기 위해 otdam_app-network 사용
 services:
-  # ============================================
-  # 자강 웹 (Vite + React)
-  # jagang.jinproject.xyz
-  # ============================================
   jagang-web:
     build:
       context: .
@@ -18,8 +12,8 @@ services:
     ports:
       - "8003:80"
     networks:
-      - app-network
+      - otdam_app-network
 
 networks:
-  app-network:
-    driver: bridge
+  otdam_app-network:
+    external: true
