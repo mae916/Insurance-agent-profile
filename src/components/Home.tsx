@@ -2,6 +2,8 @@ import { ArrowRight, Award, Shield, Heart, Star, Sparkles } from 'lucide-react';
 import man from '../assets/silversu.webp';
 import { useInView } from '../hooks/useInView';
 import { useCountUp } from '../hooks/useCountUp';
+import MagneticButton from './MagneticButton';
+import TiltCard from './TiltCard';
 
 function Home() {
   const { ref, isVisible } = useInView<HTMLImageElement>();
@@ -65,16 +67,16 @@ function Home() {
 
           {/* CTA 버튼 */}
           <div className="mt-10 animate-fade-in-up stagger-4">
-            <a
+            <MagneticButton
               href="http://pf.kakao.com/_wxefFn"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-4 px-12 py-5 text-lg font-bold text-white rounded-full bg-gradient-to-r from-[#0033A0] to-[#1E56B3] hover:from-[#002277] hover:to-[#0033A0] transition-all duration-300 shadow-blue hover:shadow-elevated hover:-translate-y-1"
+              className="group inline-flex items-center justify-center gap-4 px-12 py-5 text-lg font-bold text-white rounded-full bg-gradient-to-r from-[#0033A0] to-[#1E56B3] hover:from-[#002277] hover:to-[#0033A0] transition-colors duration-300 shadow-blue hover:shadow-elevated"
             >
               <Sparkles className="w-6 h-6" />
               무료 상담 신청
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
+            </MagneticButton>
           </div>
 
           {/* 통계 */}
@@ -153,20 +155,18 @@ function Home() {
               color: 'from-[#0033A0] to-[#C9A227]',
             },
           ].map(({ icon: Icon, title, desc, color }, i) => (
-            <div
+            <TiltCard
               key={title}
-              className={`group relative p-8 bg-white rounded-2xl border border-[#E2E8F0] hover:border-transparent shadow-soft hover:shadow-large transition-all duration-500 hover:-translate-y-2 overflow-hidden animate-fade-in-up`}
-              style={{ animationDelay: `${0.6 + i * 0.1}s` }}
+              className={`group relative p-8 bg-white rounded-2xl border border-[#E2E8F0] hover:border-transparent shadow-soft hover:shadow-large transition-shadow duration-500 animate-fade-in-up`}
             >
-              {/* 호버시 상단 라인 */}
-              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
-
-              <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                <Icon className="w-7 h-7 text-white" />
+              <div style={{ animationDelay: `${0.6 + i * 0.1}s` }}>
+                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <Icon className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-[#0F172A] mb-3">{title}</h3>
+                <p className="text-[#475569] leading-relaxed">{desc}</p>
               </div>
-              <h3 className="text-xl font-bold text-[#0F172A] mb-3">{title}</h3>
-              <p className="text-[#475569] leading-relaxed">{desc}</p>
-            </div>
+            </TiltCard>
           ))}
         </div>
       </div>

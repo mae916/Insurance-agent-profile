@@ -5,6 +5,7 @@ import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
 import Cases from './components/Cases';
+import ScrollProgress from './components/ScrollProgress';
 
 import useScrollToUpdateUrl from './hooks/useScrollToUpdateUrl';
 
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <>
+      <ScrollProgress />
       <Header sections={sections}></Header>
       <main>
         <Home></Home>
