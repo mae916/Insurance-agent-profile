@@ -1,4 +1,4 @@
-import { Award, Trophy, Medal, Star, CheckCircle } from 'lucide-react';
+import { Award, Trophy, Medal, CheckCircle } from 'lucide-react';
 import man from '../assets/silversu.webp';
 import Title from './Title';
 import { useInView } from '../hooks/useInView';
@@ -40,18 +40,6 @@ function About() {
                 />
               </div>
 
-              {/* 경력 배지 */}
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-5 shadow-large">
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#C9A227] to-[#D4B94E] flex items-center justify-center">
-                    <Star className="w-7 h-7 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-[#94A3B8]">삼성화재</p>
-                    <p className="text-2xl font-bold text-[#0F172A]">27년</p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 

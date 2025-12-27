@@ -82,37 +82,46 @@ export default function Contact() {
 
         {/* 절차 안내 */}
         <div ref={ref} className="mt-24">
-          <h3 className="mb-12 text-2xl font-bold text-center text-[#0F172A]">
-            상담은 이렇게 진행됩니다
-          </h3>
+          <div className="text-center mb-14">
+            <span className="inline-block px-4 py-1.5 mb-4 text-sm font-semibold text-[#0033A0] bg-[#EEF4FF] rounded-full">
+              Simple Process
+            </span>
+            <h3 className="text-3xl lg:text-4xl font-bold text-[#0F172A]">
+              상담은 이렇게 진행됩니다
+            </h3>
+          </div>
 
           {/* 데스크톱 타임라인 */}
-          <div className="hidden lg:block relative">
-            {/* 연결선 */}
-            <div className="absolute top-14 left-0 right-0 h-1 bg-gradient-to-r from-[#0033A0] via-[#C9A227] to-[#0033A0] rounded-full" />
-
-            <div className="grid grid-cols-4 gap-4">
+          <div className="hidden lg:block">
+            <div className="grid grid-cols-4 gap-6">
               {steps.map(({ num, title, desc, icon: Icon }, i) => (
                 <div
                   key={num}
-                  className={`relative pt-6 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
+                  className={`relative ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
                   style={{ animationDelay: `${i * 0.15}s` }}
                 >
-                  {/* 단계 원 */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10">
-                    <div className={`w-12 h-12 flex items-center justify-center bg-white rounded-full border-4 ${i === 3 ? 'border-[#C9A227]' : 'border-[#0033A0]'} shadow-medium`}>
-                      <span className={`text-sm font-bold ${i === 3 ? 'text-[#C9A227]' : 'text-[#0033A0]'}`}>{num}</span>
+                  {/* 카드 */}
+                  <div className={`relative p-8 text-center bg-white rounded-3xl border-2 ${i === 3 ? 'border-[#C9A227]/30' : 'border-[#E2E8F0]'} hover:border-[#0033A0]/30 shadow-soft hover:shadow-large transition-all duration-300 group`}>
+                    {/* 단계 번호 */}
+                    <div className={`absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 flex items-center justify-center rounded-full font-bold text-white ${i === 3 ? 'bg-gradient-to-br from-[#C9A227] to-[#D4B94E]' : 'bg-gradient-to-br from-[#0033A0] to-[#1E56B3]'} shadow-medium`}>
+                      {num}
                     </div>
+
+                    {/* 아이콘 */}
+                    <div className={`flex items-center justify-center w-16 h-16 mx-auto mt-4 mb-5 rounded-2xl ${i === 3 ? 'bg-[#FFFDF7]' : 'bg-[#EEF4FF]'} group-hover:scale-110 transition-transform`}>
+                      <Icon className={`w-8 h-8 ${i === 3 ? 'text-[#C9A227]' : 'text-[#0033A0]'}`} />
+                    </div>
+
+                    <h4 className="text-lg font-bold text-[#0F172A] mb-2">{title}</h4>
+                    <p className="text-sm text-[#64748B] leading-relaxed">{desc}</p>
                   </div>
 
-                  {/* 카드 */}
-                  <div className="mt-12 p-6 text-center bg-white rounded-2xl border border-[#E2E8F0] hover:border-[#0033A0]/20 shadow-soft hover:shadow-medium transition-all group">
-                    <div className={`flex items-center justify-center w-14 h-14 mx-auto mb-4 rounded-2xl ${i === 3 ? 'bg-gradient-to-br from-[#C9A227] to-[#D4B94E]' : 'bg-gradient-to-br from-[#0033A0] to-[#1E56B3]'} group-hover:scale-110 transition-transform`}>
-                      <Icon className="w-7 h-7 text-white" />
+                  {/* 화살표 (마지막 제외) */}
+                  {i < 3 && (
+                    <div className="absolute top-1/2 -right-6 transform -translate-y-1/2 w-6 h-6 flex items-center justify-center bg-white rounded-full shadow-soft z-10">
+                      <ArrowRight className="w-4 h-4 text-[#0033A0]" />
                     </div>
-                    <h4 className="font-bold text-[#0F172A]">{title}</h4>
-                    <p className="mt-2 text-sm text-[#64748B]">{desc}</p>
-                  </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -120,19 +129,26 @@ export default function Contact() {
 
           {/* 모바일 버전 */}
           <div className="lg:hidden space-y-4">
-            {steps.map(({ num, title, desc }, i) => (
+            {steps.map(({ num, title, desc, icon: Icon }, i) => (
               <div
                 key={num}
-                className={`flex items-start gap-4 p-5 bg-white rounded-2xl border border-[#E2E8F0] shadow-soft ${
+                className={`relative flex items-center gap-5 p-6 bg-white rounded-2xl border-2 ${i === 3 ? 'border-[#C9A227]/30' : 'border-[#E2E8F0]'} shadow-soft ${
                   isVisible ? 'animate-fade-in-up' : 'opacity-0'
                 }`}
                 style={{ animationDelay: `${i * 0.1}s` }}
               >
-                <div className={`flex items-center justify-center w-14 h-14 rounded-2xl ${i === 3 ? 'bg-gradient-to-br from-[#C9A227] to-[#D4B94E]' : 'bg-gradient-to-br from-[#0033A0] to-[#1E56B3]'} flex-shrink-0`}>
-                  <span className="text-lg font-bold text-white">{num}</span>
+                {/* 단계 번호 + 아이콘 */}
+                <div className="relative flex-shrink-0">
+                  <div className={`flex items-center justify-center w-16 h-16 rounded-2xl ${i === 3 ? 'bg-[#FFFDF7]' : 'bg-[#EEF4FF]'}`}>
+                    <Icon className={`w-8 h-8 ${i === 3 ? 'text-[#C9A227]' : 'text-[#0033A0]'}`} />
+                  </div>
+                  <div className={`absolute -top-2 -right-2 w-7 h-7 flex items-center justify-center rounded-full text-sm font-bold text-white ${i === 3 ? 'bg-gradient-to-br from-[#C9A227] to-[#D4B94E]' : 'bg-gradient-to-br from-[#0033A0] to-[#1E56B3]'}`}>
+                    {num}
+                  </div>
                 </div>
-                <div className="pt-1">
-                  <h4 className="font-bold text-[#0F172A]">{title}</h4>
+
+                <div>
+                  <h4 className="text-lg font-bold text-[#0F172A]">{title}</h4>
                   <p className="mt-1 text-sm text-[#64748B]">{desc}</p>
                 </div>
               </div>
@@ -163,25 +179,16 @@ export default function Contact() {
                 최적의 보험 설계를 도와드립니다
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="http://pf.kakao.com/_wxefFn"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-bold text-[#0033A0] bg-white rounded-full hover:bg-[#F8FAFC] transition-all hover:scale-105 shadow-elevated"
-                >
-                  <MessageCircle className="w-6 h-6" />
-                  카카오톡으로 상담하기
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </a>
-                <a
-                  href="tel:010-1234-5678"
-                  className="inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-semibold text-white bg-white/10 backdrop-blur-sm rounded-full border border-white/30 hover:bg-white/20 transition-all"
-                >
-                  <Phone className="w-5 h-5" />
-                  전화로 상담하기
-                </a>
-              </div>
+              <a
+                href="http://pf.kakao.com/_wxefFn"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center justify-center gap-3 px-12 py-5 text-lg font-bold text-[#0033A0] bg-white rounded-full hover:bg-[#F8FAFC] transition-all hover:scale-105 shadow-elevated"
+              >
+                <MessageCircle className="w-6 h-6" />
+                카카오톡으로 상담하기
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </a>
             </div>
           </div>
         </div>
