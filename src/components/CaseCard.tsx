@@ -72,8 +72,6 @@ const CaseCard = ({
       }`}
       style={{ animationDelay: `${index * 0.1}s` }}
     >
-      {/* 호버시 상단 라인 */}
-      <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${config.gradient} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
 
       {/* 타입 라벨 + 제목 */}
       <div className="flex items-start gap-4 mb-6">

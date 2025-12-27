@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TrendingDown, FileText, AlertCircle } from 'lucide-react';
+import { TrendingDown, FileText, AlertCircle, ArrowRight } from 'lucide-react';
 import CaseCard from './CaseCard';
 import Title from './Title';
 import { remodelingCases, newJoinCases, specialCases } from '../data/cases';
@@ -52,13 +52,13 @@ function Cases() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
                   isActive
-                    ? 'bg-[#1e3a5f] text-white'
-                    : 'bg-white text-[#666] border border-[#eee] hover:border-[#1e3a5f]/20'
+                    ? 'bg-gradient-to-r from-[#0033A0] to-[#1E56B3] text-white shadow-blue'
+                    : 'bg-white text-[#64748B] border border-[#E2E8F0] hover:border-[#0033A0]/30'
                 }`}
               >
                 <span>{tab.label}</span>
                 <span className={`px-1.5 py-0.5 text-xs rounded-md ${
-                  isActive ? 'bg-white/20' : 'bg-[#f5f5f5]'
+                  isActive ? 'bg-white/20' : 'bg-[#EEF4FF] text-[#0033A0]'
                 }`}>
                   {tab.count}
                 </span>
@@ -76,16 +76,15 @@ function Cases() {
 
         {/* 하단 CTA */}
         <div className="mt-16 text-center">
-          <p className="text-[#666] mb-6">
-            <span className="font-semibold text-[#1a1a1a]">나의 상황</span>에 맞는 상담이 필요하신가요?
+          <p className="text-[#64748B] mb-6">
+            <span className="font-semibold text-[#0F172A]">나의 상황</span>에 맞는 상담이 필요하신가요?
           </p>
           <a
-            href="http://pf.kakao.com/_wxefFn"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 font-medium text-white bg-[#1e3a5f] rounded-full hover:bg-[#2d5a87] transition-colors"
+            href="#contact"
+            className="inline-flex items-center gap-2 px-8 py-4 font-bold text-white bg-gradient-to-r from-[#0033A0] to-[#1E56B3] rounded-full hover:from-[#002277] hover:to-[#0033A0] transition-all shadow-blue hover:shadow-elevated hover:-translate-y-0.5"
           >
-            무료 상담 신청하기
+            무료 상담 받기
+            <ArrowRight className="w-5 h-5" />
           </a>
         </div>
       </div>

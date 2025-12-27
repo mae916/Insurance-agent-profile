@@ -1,9 +1,11 @@
-import { Clock, ClipboardList, MessageCircle, ArrowRight, CheckCircle, Phone, Sparkles } from 'lucide-react';
+import { useState } from 'react';
+import { Clock, ClipboardList, MessageCircle, ArrowRight, CheckCircle, Sparkles, Send } from 'lucide-react';
 import Title from './Title';
 import { useInView } from '../hooks/useInView';
+import TiltCard from './TiltCard';
 
 const steps = [
-  { num: '1', title: '카카오톡 문의', desc: '간단한 인사와 함께 문의를 남겨주세요', icon: MessageCircle },
+  { num: '1', title: '문의 접수', desc: '폼 작성 또는 카카오톡으로 문의', icon: MessageCircle },
   { num: '2', title: '상담 내용 파악', desc: '현재 가입 내역과 상황을 들어봅니다', icon: ClipboardList },
   { num: '3', title: '맞춤 설계안 제안', desc: '필요한 보장만 담은 설계안을 제안드립니다', icon: Sparkles },
   { num: '4', title: '가입 완료', desc: '설계안에 동의하시면 가입을 도와드립니다', icon: CheckCircle },
@@ -11,6 +13,34 @@ const steps = [
 
 export default function Contact() {
   const { ref, isVisible } = useInView<HTMLDivElement>();
+  const [formData, setFormData] = useState({ name: '', phone: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('https://formspree.io/f/xzzzzzzz', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', phone: '', message: '' });
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section id="contact" className="relative py-28 bg-[#F8FAFC] scroll-mt-14 overflow-hidden">
@@ -21,8 +51,156 @@ export default function Contact() {
       <div className="relative z-10 w-[90%] mx-auto lg:w-4/5">
         <Title
           title="문의하기"
-          subtitle="편하게 연락주시면 친절히 상담해드리겠습니다"
+          subtitle="편하신 방법으로 문의해주세요"
         />
+
+        {/* 문의 방법 - 폼 + 카카오톡 2단 레이아웃 */}
+        <div className="grid grid-cols-1 gap-8 mt-16 lg:grid-cols-2">
+          {/* 문의 폼 */}
+          <div className="p-8 bg-white rounded-3xl border border-[#E2E8F0] shadow-soft">
+            <div className="inline-block px-3 py-1 mb-4 text-xs font-semibold text-[#0033A0] bg-[#EEF4FF] rounded-full">
+              연락처만 남기고 싶다면
+            </div>
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0033A0] to-[#1E56B3] flex items-center justify-center">
+                <Send className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h4 className="text-xl font-bold text-[#0F172A]">콜백 요청</h4>
+              </div>
+            </div>
+            <p className="text-sm text-[#94A3B8] mb-6">연락처를 남겨주시면 확인 후 전화드립니다</p>
+
+            <form onSubmit={handleSubmit}>
+              <div className="space-y-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-semibold text-[#0F172A] mb-2">
+                    성함 <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full px-4 py-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:border-[#0033A0] focus:ring-2 focus:ring-[#0033A0]/10 transition-all"
+                    placeholder="홍길동"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-semibold text-[#0F172A] mb-2">
+                    연락처 <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    required
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="w-full px-4 py-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:border-[#0033A0] focus:ring-2 focus:ring-[#0033A0]/10 transition-all"
+                    placeholder="010-1234-5678"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-semibold text-[#0F172A] mb-2">
+                    문의 내용
+                  </label>
+                  <textarea
+                    id="message"
+                    rows={3}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className="w-full px-4 py-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:border-[#0033A0] focus:ring-2 focus:ring-[#0033A0]/10 transition-all resize-none"
+                    placeholder="궁금하신 점을 적어주세요"
+                  />
+                </div>
+              </div>
+
+              {submitStatus === 'success' && (
+                <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-xl flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <p className="text-sm text-green-700">문의가 전송되었습니다!</p>
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-xl">
+                  <p className="text-sm text-red-700">전송 실패. 카카오톡으로 문의해주세요.</p>
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="mt-5 w-full flex items-center justify-center gap-2 px-6 py-4 font-bold text-white bg-gradient-to-r from-[#0033A0] to-[#1E56B3] rounded-xl hover:from-[#002277] hover:to-[#0033A0] transition-all disabled:opacity-50 shadow-blue"
+              >
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    전송 중...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    문의 보내기
+                  </>
+                )}
+              </button>
+            </form>
+          </div>
+
+          {/* 카카오톡 상담 */}
+          <div>
+            <div className="p-8 bg-gradient-to-br from-[#0033A0] via-[#1E56B3] to-[#0033A0] rounded-3xl relative overflow-hidden">
+              {/* 배경 장식 */}
+              <div className="absolute top-0 right-0 w-40 h-40 bg-[#C9A227]/20 rounded-full blur-2xl" />
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full blur-xl" />
+
+              <div className="relative">
+                <div className="inline-block px-3 py-1 mb-4 text-xs font-semibold text-[#C9A227] bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+                  바로 상담하고 싶다면
+                </div>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                    <MessageCircle className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-white">카카오톡 실시간 상담</h4>
+                  </div>
+                </div>
+                <p className="text-sm text-white/70 mb-6">지금 바로 1:1 채팅으로 상담받으세요</p>
+
+                <div className="space-y-4 mb-8">
+                  <div className="flex items-center gap-3 text-white/90">
+                    <CheckCircle className="w-5 h-5 text-[#C9A227]" />
+                    <span>실시간 1:1 상담</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-white/90">
+                    <CheckCircle className="w-5 h-5 text-[#C9A227]" />
+                    <span>사진/파일 공유 가능</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-white/90">
+                    <CheckCircle className="w-5 h-5 text-[#C9A227]" />
+                    <span>빠른 답변</span>
+                  </div>
+                </div>
+
+                <a
+                  href="http://pf.kakao.com/_wxefFn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center gap-3 w-full px-6 py-4 font-bold text-[#0033A0] bg-white rounded-xl hover:bg-[#F8FAFC] transition-colors shadow-elevated"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  카카오톡으로 상담하기
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* 안내 카드 */}
         <div className="grid grid-cols-1 gap-6 mt-16 lg:grid-cols-2">
@@ -93,28 +271,28 @@ export default function Contact() {
 
           {/* 데스크톱 타임라인 */}
           <div className="hidden lg:block">
-            <div className="grid grid-cols-4 gap-6">
+            <div className="grid grid-cols-4 gap-6 pt-6">
               {steps.map(({ num, title, desc, icon: Icon }, i) => (
                 <div
                   key={num}
                   className={`relative ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
                   style={{ animationDelay: `${i * 0.15}s` }}
                 >
-                  {/* 카드 */}
-                  <div className={`relative p-8 text-center bg-white rounded-3xl border-2 ${i === 3 ? 'border-[#C9A227]/30' : 'border-[#E2E8F0]'} hover:border-[#0033A0]/30 shadow-soft hover:shadow-large transition-all duration-300 group`}>
-                    {/* 단계 번호 */}
-                    <div className={`absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 flex items-center justify-center rounded-full font-bold text-white ${i === 3 ? 'bg-gradient-to-br from-[#C9A227] to-[#D4B94E]' : 'bg-gradient-to-br from-[#0033A0] to-[#1E56B3]'} shadow-medium`}>
-                      {num}
-                    </div>
-
-                    {/* 아이콘 */}
-                    <div className={`flex items-center justify-center w-16 h-16 mx-auto mt-4 mb-5 rounded-2xl ${i === 3 ? 'bg-[#FFFDF7]' : 'bg-[#EEF4FF]'} group-hover:scale-110 transition-transform`}>
-                      <Icon className={`w-8 h-8 ${i === 3 ? 'text-[#C9A227]' : 'text-[#0033A0]'}`} />
-                    </div>
-
-                    <h4 className="text-lg font-bold text-[#0F172A] mb-2">{title}</h4>
-                    <p className="text-sm text-[#64748B] leading-relaxed">{desc}</p>
+                  {/* 단계 번호 - TiltCard 바깥 */}
+                  <div className={`absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 flex items-center justify-center rounded-full font-bold text-white ${i === 3 ? 'bg-gradient-to-br from-[#C9A227] to-[#D4B94E]' : 'bg-gradient-to-br from-[#0033A0] to-[#1E56B3]'} shadow-medium z-20`}>
+                    {num}
                   </div>
+
+                  {/* 카드 */}
+                  <TiltCard className={`relative p-6 pt-8 text-center bg-white rounded-3xl border-2 ${i === 3 ? 'border-[#C9A227]/30' : 'border-[#E2E8F0]'} hover:border-[#0033A0]/30 shadow-soft hover:shadow-large transition-shadow duration-300 group h-[200px] flex flex-col justify-center`}>
+                    {/* 아이콘 */}
+                    <div className={`flex items-center justify-center w-14 h-14 mx-auto mb-4 rounded-2xl ${i === 3 ? 'bg-[#FFFDF7]' : 'bg-[#EEF4FF]'} group-hover:scale-110 transition-transform`}>
+                      <Icon className={`w-7 h-7 ${i === 3 ? 'text-[#C9A227]' : 'text-[#0033A0]'}`} />
+                    </div>
+
+                    <h4 className="text-base font-bold text-[#0F172A] mb-1">{title}</h4>
+                    <p className="text-sm text-[#64748B] leading-snug">{desc}</p>
+                  </TiltCard>
 
                   {/* 화살표 (마지막 제외) */}
                   {i < 3 && (
@@ -156,41 +334,30 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="mt-20">
-          <div className="relative overflow-hidden p-10 lg:p-16 bg-gradient-to-br from-[#0033A0] via-[#1E56B3] to-[#0033A0] rounded-3xl">
-            {/* 배경 장식 */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-[#C9A227]/20 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-2xl" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-white/5 to-transparent rounded-full" />
-
-            <div className="relative text-center">
-              <div className="inline-flex items-center gap-2 px-5 py-2.5 mb-6 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 animate-bounce-gentle">
-                <Phone className="w-4 h-4 text-[#C9A227]" />
-                <span className="text-sm font-medium text-white">무료 상담</span>
-              </div>
-
-              <h3 className="text-2xl lg:text-4xl font-bold text-white mb-4">
-                지금 바로 상담을 시작하세요
-              </h3>
-              <p className="text-white/70 mb-10 max-w-lg mx-auto text-lg">
-                27년 경력의 전문가가 고객님의 상황에 맞는
-                <br className="hidden sm:block" />
-                최적의 보험 설계를 도와드립니다
-              </p>
-
-              <a
-                href="http://pf.kakao.com/_wxefFn"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-3 px-12 py-5 text-lg font-bold text-[#0033A0] bg-white rounded-full hover:bg-[#F8FAFC] transition-all hover:scale-105 shadow-elevated"
-              >
-                <MessageCircle className="w-6 h-6" />
-                카카오톡으로 상담하기
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </div>
+        {/* 마무리 CTA */}
+        <div className="mt-24 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 text-sm font-medium text-[#C9A227] bg-[#FFFDF7] rounded-full border border-[#C9A227]/20">
+            <CheckCircle className="w-4 h-4" />
+            27년 경력의 전문가
           </div>
+          <h3 className="text-2xl lg:text-3xl font-bold text-[#0F172A] mb-4">
+            보험, 이제 걱정하지 마세요
+          </h3>
+          <p className="text-[#64748B] mb-8 max-w-md mx-auto">
+            고객님의 상황에 맞는 최적의 보장을<br className="sm:hidden" />
+            함께 찾아드리겠습니다
+          </p>
+          <a
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: document.getElementById('contact')?.offsetTop || 0, behavior: 'smooth' });
+            }}
+            className="inline-flex items-center gap-2 px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-[#0033A0] to-[#1E56B3] rounded-full hover:from-[#002277] hover:to-[#0033A0] transition-all shadow-blue hover:shadow-elevated hover:-translate-y-0.5"
+          >
+            지금 상담하기
+            <ArrowRight className="w-5 h-5" />
+          </a>
         </div>
       </div>
     </section>
