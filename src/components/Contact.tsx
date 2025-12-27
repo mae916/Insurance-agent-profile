@@ -22,7 +22,7 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://formspree.io/ruchia916@naver.com', {
+      const response = await fetch('https://pium.jinproject.xyz/api/email/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
