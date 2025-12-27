@@ -1,5 +1,12 @@
 import { useInView } from '../hooks/useInView';
-import { ArrowRight, TrendingDown, FileText, AlertCircle, CheckCircle2, Zap } from 'lucide-react';
+import {
+  ArrowRight,
+  TrendingDown,
+  FileText,
+  AlertCircle,
+  CheckCircle2,
+  Zap,
+} from 'lucide-react';
 
 interface CaseCardProps {
   title: string;
@@ -32,25 +39,28 @@ const CaseCard = ({
 
   const isRemodeling = type === 'remodeling' || (before && after && discount);
   const isNewJoin = type === 'newjoin' || (!isRemodeling && plan);
-  const isSpecial = type === 'special' || (!isRemodeling && !isNewJoin && issue);
+  const isSpecial =
+    type === 'special' || (!isRemodeling && !isNewJoin && issue);
 
   const getTypeConfig = () => {
-    if (isRemodeling) return {
-      icon: TrendingDown,
-      gradient: 'from-[#0033A0] to-[#1E56B3]',
-      lightBg: 'bg-[#0033A0]/5',
-      textColor: 'text-[#0033A0]',
-      borderColor: 'border-[#0033A0]/20',
-      label: '리모델링',
-    };
-    if (isNewJoin) return {
-      icon: FileText,
-      gradient: 'from-[#C9A227] to-[#D4B94E]',
-      lightBg: 'bg-[#C9A227]/5',
-      textColor: 'text-[#A68B1F]',
-      borderColor: 'border-[#C9A227]/20',
-      label: '신규설계',
-    };
+    if (isRemodeling)
+      return {
+        icon: TrendingDown,
+        gradient: 'from-[#0033A0] to-[#1E56B3]',
+        lightBg: 'bg-[#0033A0]/5',
+        textColor: 'text-[#0033A0]',
+        borderColor: 'border-[#0033A0]/20',
+        label: '리모델링',
+      };
+    if (isNewJoin)
+      return {
+        icon: FileText,
+        gradient: 'from-[#C9A227] to-[#D4B94E]',
+        lightBg: 'bg-[#C9A227]/5',
+        textColor: 'text-[#A68B1F]',
+        borderColor: 'border-[#C9A227]/20',
+        label: '신규설계',
+      };
     return {
       icon: AlertCircle,
       gradient: 'from-[#475569] to-[#64748B]',
@@ -72,14 +82,17 @@ const CaseCard = ({
       }`}
       style={{ animationDelay: `${index * 0.1}s` }}
     >
-
       {/* 타입 라벨 + 제목 */}
       <div className="flex items-start gap-4 mb-6">
-        <div className={`flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br ${config.gradient} group-hover:scale-110 transition-transform duration-300`}>
-          <Icon className="w-7 h-7 text-white" />
+        <div
+          className={`flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br ${config.gradient} group-hover:scale-110 transition-transform duration-300`}
+        >
+          <Icon className="text-white w-7 h-7" />
         </div>
         <div className="flex-1 pt-1">
-          <span className={`inline-block px-3 py-1 text-xs font-semibold ${config.textColor} ${config.lightBg} rounded-full mb-2`}>
+          <span
+            className={`inline-block px-3 py-1 text-xs font-semibold ${config.textColor} ${config.lightBg} rounded-full mb-2`}
+          >
             {config.label}
           </span>
           <h4 className="text-lg font-bold text-[#0F172A]">{title}</h4>
@@ -91,8 +104,12 @@ const CaseCard = ({
         <div className="relative p-5 bg-gradient-to-br from-[#F8FAFC] to-white rounded-xl border border-[#E2E8F0]">
           <div className="relative flex items-center gap-4">
             <div className="flex-1 space-y-1">
-              <p className="text-xs font-semibold text-[#94A3B8] uppercase tracking-wider">Before</p>
-              <p className="text-sm text-[#64748B] line-through decoration-red-400/50">{before}</p>
+              <p className="text-xs font-semibold text-[#94A3B8] uppercase tracking-wider">
+                Before
+              </p>
+              <p className="text-sm text-[#64748B] line-through decoration-red-400/50">
+                {before}
+              </p>
             </div>
 
             <div className="flex items-center justify-center w-10 h-10 bg-white rounded-full border border-[#E2E8F0] shadow-soft">
@@ -100,7 +117,9 @@ const CaseCard = ({
             </div>
 
             <div className="flex-1 space-y-1 text-right">
-              <p className="text-xs font-semibold text-[#94A3B8] uppercase tracking-wider">After</p>
+              <p className="text-xs font-semibold text-[#94A3B8] uppercase tracking-wider">
+                After
+              </p>
               <p className="text-sm font-semibold text-[#0F172A]">{after}</p>
             </div>
           </div>
@@ -126,38 +145,39 @@ const CaseCard = ({
         </div>
       )}
 
-      {/* 특수 상황 - 타임라인 스타일 */}
+      {/* 특수 상황 - 숫자 스텝 스타일 */}
       {isSpecial && issue && action && result && (
-        <div className="relative pl-6">
-          {/* 연속된 세로선 */}
-          <div className="absolute left-[5px] top-[6px] bottom-[6px] w-[2px] bg-gradient-to-b from-[#94A3B8] via-[#C9A227] to-[#0033A0]" />
-
-          <div className="space-y-3">
-            {/* 문제 */}
-            <div className="relative">
-              <div className="absolute -left-6 top-4 w-3 h-3 bg-[#94A3B8] rounded-full border-2 border-white shadow-md z-10" />
-              <div className="p-4 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0]">
-                <p className="text-xs font-bold text-[#94A3B8] uppercase tracking-wider mb-1">문제 상황</p>
-                <p className="text-sm text-[#475569]">{issue}</p>
-              </div>
+        <div className="space-y-3">
+          {/* Step 1: 문제 */}
+          <div className="flex gap-3">
+            <div className="flex-shrink-0 w-7 h-7 rounded-full bg-[#94A3B8] flex items-center justify-center">
+              <span className="text-xs font-bold text-white">1</span>
             </div>
-
-            {/* 조치 */}
-            <div className="relative">
-              <div className="absolute -left-6 top-4 w-3 h-3 bg-[#C9A227] rounded-full border-2 border-white shadow-md z-10" />
-              <div className="p-4 bg-[#FFFDF7] rounded-xl border border-[#C9A227]/10">
-                <p className="text-xs font-bold text-[#C9A227] uppercase tracking-wider mb-1">조치 내용</p>
-                <p className="text-sm text-[#475569]">{action}</p>
-              </div>
+            <div className="flex-1 p-3 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0]">
+              <p className="text-xs font-bold text-[#94A3B8] mb-1">문제 상황</p>
+              <p className="text-sm text-[#475569]">{issue}</p>
             </div>
+          </div>
 
-            {/* 결과 */}
-            <div className="relative">
-              <div className="absolute -left-6 top-4 w-3 h-3 bg-[#0033A0] rounded-full border-2 border-white shadow-md z-10" />
-              <div className="p-4 bg-[#EEF4FF] rounded-xl border border-[#0033A0]/10">
-                <p className="text-xs font-bold text-[#0033A0] uppercase tracking-wider mb-1">해결 결과</p>
-                <p className="text-sm font-medium text-[#0F172A]">{result}</p>
-              </div>
+          {/* Step 2: 조치 */}
+          <div className="flex gap-3">
+            <div className="flex-shrink-0 w-7 h-7 rounded-full bg-[#C9A227] flex items-center justify-center">
+              <span className="text-xs font-bold text-white">2</span>
+            </div>
+            <div className="flex-1 p-3 bg-[#FFFDF7] rounded-xl border border-[#C9A227]/20">
+              <p className="text-xs font-bold text-[#C9A227] mb-1">조치 내용</p>
+              <p className="text-sm text-[#475569]">{action}</p>
+            </div>
+          </div>
+
+          {/* Step 3: 결과 */}
+          <div className="flex gap-3">
+            <div className="flex-shrink-0 w-7 h-7 rounded-full bg-[#0033A0] flex items-center justify-center">
+              <span className="text-xs font-bold text-white">3</span>
+            </div>
+            <div className="flex-1 p-3 bg-[#EEF4FF] rounded-xl border border-[#0033A0]/20">
+              <p className="text-xs font-bold text-[#0033A0] mb-1">해결 결과</p>
+              <p className="text-sm font-medium text-[#0F172A]">{result}</p>
             </div>
           </div>
         </div>
