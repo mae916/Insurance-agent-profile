@@ -21,9 +21,9 @@ jobs:
           script: |
             set -e
 
-            echo "🧹 Cleaning up Docker to free disk space..."
-            docker system prune -af --volumes || true
-            docker builder prune -af || true
+            echo "🧹 Cleaning up Docker dangling images..."
+            docker image prune -f || true
+            docker builder prune -f || true
 
             echo "📦 Cloning Insurance-agent-profile repository..."
             rm -rf ~/Insurance-agent-profile
@@ -37,7 +37,10 @@ jobs:
             echo "🔄 Restarting jagang-web container..."
             docker-compose up -d jagang-web
 
+            echo "🔄 Ensuring nginx-proxy is running..."
+            cd ~/myProject 2>/dev/null && docker-compose up -d nginx-proxy 2>/dev/null || echo "nginx-proxy not in myProject"
+
             echo "✅ Deployment status:"
-            docker-compose ps
+            cd ~/Insurance-agent-profile && docker-compose ps
 
             echo "🎉 Deployment completed at $(date)"
