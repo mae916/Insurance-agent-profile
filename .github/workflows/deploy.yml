@@ -21,6 +21,10 @@ jobs:
           script: |
             set -e
 
+            echo "🧹 Cleaning up Docker to free disk space..."
+            docker system prune -af --volumes || true
+            docker builder prune -af || true
+
             echo "📦 Cloning Insurance-agent-profile repository..."
             rm -rf ~/Insurance-agent-profile
             git clone --depth 1 https://github.com/mae916/Insurance-agent-profile.git ~/Insurance-agent-profile
