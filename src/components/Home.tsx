@@ -36,9 +36,9 @@ function Home() {
             보험은 결국
             <br />
             <span className="relative">
-              <span className="gradient-text">사람</span>
-              <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
-                <path d="M2 10C50 4 150 4 198 10" stroke="#C9A227" strokeWidth="3" strokeLinecap="round"/>
+              <span className="gradient-text">설계사 역량</span>
+              <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 300 12" fill="none">
+                <path d="M2 10C75 4 225 4 298 10" stroke="#C9A227" strokeWidth="3" strokeLinecap="round"/>
               </svg>
             </span>
             입니다
