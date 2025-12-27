@@ -24,6 +24,7 @@ jobs:
             echo "📦 Updating Insurance-agent-profile repository..."
             if [ -d ~/Insurance-agent-profile/.git ]; then
               cd ~/Insurance-agent-profile
+              git remote set-url origin https://github.com/mae916/Insurance-agent-profile.git
               git fetch origin
               git reset --hard origin/main
             else
