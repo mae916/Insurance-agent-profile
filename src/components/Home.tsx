@@ -1,4 +1,4 @@
-import { ArrowRight, Award, Shield, Heart, Star, Sparkles, Phone } from 'lucide-react';
+import { ArrowRight, Award, Shield, Heart, Star, Sparkles } from 'lucide-react';
 import man from '../assets/silversu.webp';
 import { useInView } from '../hooks/useInView';
 import { useCountUp } from '../hooks/useCountUp';
@@ -64,7 +64,7 @@ function Home() {
           </div>
 
           {/* CTA 버튼 */}
-          <div className="flex flex-col sm:flex-row gap-4 mt-10 animate-fade-in-up stagger-4">
+          <div className="mt-10 animate-fade-in-up stagger-4">
             <a
               href="http://pf.kakao.com/_wxefFn"
               target="_blank"
@@ -74,13 +74,6 @@ function Home() {
               <Sparkles className="w-5 h-5" />
               무료 상담 신청
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a
-              href="tel:010-1234-5678"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-[#0033A0] bg-white rounded-full border-2 border-[#0033A0]/20 hover:border-[#0033A0] hover:bg-[#0033A0] hover:text-white transition-all duration-300"
-            >
-              <Phone className="w-5 h-5" />
-              전화 상담
             </a>
           </div>
 
@@ -133,30 +126,6 @@ function Home() {
               <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent" />
             </div>
 
-            {/* 플로팅 배지들 */}
-            <div className="absolute -left-4 top-1/4 bg-white rounded-2xl p-4 shadow-large animate-float">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0033A0] to-[#1E56B3] flex items-center justify-center">
-                  <Award className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <p className="text-xs text-[#94A3B8]">손해보험협회</p>
-                  <p className="font-bold text-[#0F172A]">우수 인증</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="absolute -right-4 bottom-1/3 bg-white rounded-2xl p-4 shadow-large animate-float" style={{ animationDelay: '1s' }}>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#C9A227] to-[#D4B94E] flex items-center justify-center">
-                  <Shield className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <p className="text-xs text-[#94A3B8]">전문 경력</p>
-                  <p className="font-bold text-[#0F172A]">27년</p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
