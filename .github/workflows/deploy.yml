@@ -17,8 +17,29 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
+          command_timeout: 15m
           script: |
-            cd /home/ec2-user/myProject
-            git pull origin main
-            docker-compose up -d --build jagang-web
-            echo "Deployment completed at $(date)"
+            set -e
+
+            echo "📦 Updating Insurance-agent-profile repository..."
+            if [ -d ~/Insurance-agent-profile/.git ]; then
+              cd ~/Insurance-agent-profile
+              git fetch origin
+              git reset --hard origin/main
+            else
+              rm -rf ~/Insurance-agent-profile
+              git clone git@github.com:mae916/Insurance-agent-profile.git ~/Insurance-agent-profile
+            fi
+
+            cd ~/Insurance-agent-profile
+
+            echo "🐳 Rebuilding jagang-web container..."
+            docker-compose build --no-cache jagang-web
+
+            echo "🔄 Restarting jagang-web container..."
+            docker-compose up -d jagang-web
+
+            echo "✅ Deployment status:"
+            docker-compose ps
+
+            echo "🎉 Deployment completed at $(date)"
