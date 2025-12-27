@@ -28,7 +28,7 @@ jobs:
               git reset --hard origin/main
             else
               rm -rf ~/Insurance-agent-profile
-              git clone git@github.com:mae916/Insurance-agent-profile.git ~/Insurance-agent-profile
+              git clone https://github.com/mae916/Insurance-agent-profile.git ~/Insurance-agent-profile
             fi
 
             cd ~/Insurance-agent-profile
