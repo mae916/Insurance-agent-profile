@@ -1,0 +1,14 @@
+# robots.txt for 삼성화재 자강대리점
+# https://jagang.jinproject.xyz
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://jagang.jinproject.xyz/sitemap.xml
+
+# Crawl-delay (optional, for polite crawling)
+Crawl-delay: 1
+
+# Block unnecessary paths
+Disallow: /assets/readme/

@@ -1,0 +1,27 @@
+{
+  "name": "삼성화재 자강대리점 - 김은수 설계사",
+  "short_name": "자강대리점",
+  "description": "27년 경력 김은수 설계사의 보험 전문 상담 서비스. 13년 연속 손해보험협회 우수 인증.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0033A0",
+  "orientation": "portrait-primary",
+  "lang": "ko",
+  "icons": [
+    {
+      "src": "/og-image.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "finance"],
+  "shortcuts": [
+    {
+      "name": "카카오톡 상담",
+      "url": "http://pf.kakao.com/_wxefFn",
+      "description": "카카오톡으로 바로 상담하기"
+    }
+  ]
+}
